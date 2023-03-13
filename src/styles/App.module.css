@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* colors */
+  --clr-dark: hsl(0, 0%, 0%);
+  --clr-light: hsl(0, 0%, 100%);
+  --clr-red: hsl(0, 100%, 84%);
+  --clr-yellow: hsl(60, 96%, 79%);
+  --clr-light-blue: hsl(185, 100%, 80%);
+  --clr-mid-blue: hsl(217, 100%, 81%);
+  --clr-pink: hsl(300, 100%, 89%);
+  --clr-orange: hsl(33, 100%, 82%);
+  --clr-green: hsl(110, 100%, 87%);
+  --clr-purple: hsl(249, 100%, 85%);
+
+  /* font-sizes */
+  --fs-900: 9.375rem;
+  --fs-800: 6.25rem;
+  --fs-700: 3rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.5rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+  --fs-100: 0.65rem;
+
+  /* font-weight */
+  --fw-900: 900;
+  --fw-800: 800;
+  --fw-700: 700;
+  --fw-600: 600;
+  --fw-500: 500;
+  --fw-400: 400;
+  --fw-300: 300;
+  --fw-200: 200;
+  --fw-100: 100;
+
+  /* letter-spacing */
+  --ls-1: 1px;
+  --ls-2: 2px;
+  --ls-3: 3px;
+  --ls-4: 4px;
+  --ls-5: 5px;
+
+  /* font-families */
+  --ff-sans-normal: 'Inter', sans-serif;
+}
+
+/* Reset               */
+/* ------------------- */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset margins  */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-dark));
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
