@@ -6,7 +6,14 @@ import {
   TfiTrash,
 } from 'react-icons/tfi';
 
-const ArticleCard = ({ title, author, created_at, votes, article_img_url }) => {
+const ArticleCard = ({
+  title,
+  author,
+  created_at,
+  votes,
+  article_img_url,
+  comment_count,
+}) => {
   return (
     <li className={styles.card__articleContainer}>
       <h2 className={styles.h2__articleTitle}>{title}</h2>
@@ -24,7 +31,7 @@ const ArticleCard = ({ title, author, created_at, votes, article_img_url }) => {
           <p className={styles.btn__downVote}>
             <TfiAngleDown className={styles.svg__downVote} />
           </p>
-          <span className={styles.counter__numberVote}>00</span>
+          <span className={styles.counter__numberVote}>{votes}</span>
           <p className={styles.btn__upVote}>
             <TfiAngleUp className={styles.svg__upVote} />
           </p>
@@ -32,7 +39,7 @@ const ArticleCard = ({ title, author, created_at, votes, article_img_url }) => {
 
         <article className={styles.link__commentCount}>
           <TfiComment className={styles.svg__commentCount} />
-          <p className={styles.p__commentCount}>00</p>
+          <p className={styles.p__commentCount}>{comment_count}</p>
         </article>
 
         <article className={styles.form__articleDelete}>
@@ -40,7 +47,6 @@ const ArticleCard = ({ title, author, created_at, votes, article_img_url }) => {
             <TfiTrash className={styles.svg__articleDelete} />
           </p>
         </article>
-
       </section>
     </li>
   );
