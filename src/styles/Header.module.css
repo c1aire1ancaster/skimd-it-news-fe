@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container__header {
+  width: 100vw;
+  background-color: var(--clr-yellow);
+  border-bottom: 4px solid var(--clr-dark);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.title__website {
+  text-transform: uppercase;
+  letter-spacing: var(--ls-5);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-500);
+  padding: 0.25em;
+}
+
+.image__user {
+  background-color: grey;
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
+  position: absolute;
+  right: 1.5em;
+}
