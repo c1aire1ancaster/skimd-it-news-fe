@@ -1,4 +1,5 @@
 import styles from '../styles/ArticleCard.module.css';
+import formatDate from '../utils/ArticleCard.utils';
 import {
   TfiComment,
   TfiAngleDown,
@@ -14,20 +15,22 @@ const ArticleCard = ({
   article_img_url,
   comment_count,
 }) => {
+  const formattedDate = formatDate(created_at);
+
   return (
     <li className={styles.card__articleContainer}>
       <h2 className={styles.h2__articleTitle}>{title}</h2>
       <h3 className={styles.h3__articleAuthor}>{author}</h3>
-      <h4 className={styles.h4__articleDate}>{created_at}</h4>
+      <h4 className={styles.h4__articleDate}>{formattedDate}</h4>
       <div className={styles.div__articleImgWrapper}>
         <img
           className={styles.img__articleImg}
           src={article_img_url}
-          alt={title}
+          alt="linked to article"
         />
       </div>
       <section className={styles.div__articleInfo}>
-        <article className={styles.container__articleVotes}>
+        <div className={styles.container__articleVotes}>
           <p className={styles.btn__downVote}>
             <TfiAngleDown className={styles.svg__downVote} />
           </p>
@@ -35,18 +38,18 @@ const ArticleCard = ({
           <p className={styles.btn__upVote}>
             <TfiAngleUp className={styles.svg__upVote} />
           </p>
-        </article>
+        </div>
 
-        <article className={styles.link__commentCount}>
+        <div className={styles.link__commentCount}>
           <TfiComment className={styles.svg__commentCount} />
           <p className={styles.p__commentCount}>{comment_count}</p>
-        </article>
+        </div>
 
-        <article className={styles.form__articleDelete}>
+        <div className={styles.form__articleDelete}>
           <p className={styles.btn__articleDelete}>
             <TfiTrash className={styles.svg__articleDelete} />
           </p>
-        </article>
+        </div>
       </section>
     </li>
   );
