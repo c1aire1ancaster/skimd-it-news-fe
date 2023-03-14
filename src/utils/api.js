@@ -10,6 +10,19 @@ export const getArticles = () => {
   });
 };
 
+export const getArticleById = (article_id) => {
+  return newsApi.get(`/articles/${article_id}`).then(({ data }) => {
+    return data.articles;
+  });
+};
+
+export const getUser = (author) => {
+  return newsApi.get(`/users/${author}`).then(({ data }) => {
+    return data.users.avatar_url;
+  });
+};
+
+
 export const upVoteArticle = (article_id) => {
   return newsApi
     .patch(`/articles/${article_id}`, { inc_votes: 1 })

@@ -1,5 +1,6 @@
 import styles from '../styles/ArticleCard.module.css';
 import formatDate from '../utils/ArticleCard.utils';
+import { Link } from 'react-router-dom';
 import { TfiComment, TfiAngleDown, TfiAngleUp } from 'react-icons/tfi';
 import { upVoteArticle, downVoteArticle } from '../utils/api';
 import { useState } from 'react';
@@ -25,6 +26,7 @@ const ArticleCard = (singleArticle) => {
 
   const downVote = () => {
     setArticle((currentArticle) => {
+  article_id,
       return { ...currentArticle, votes: article.votes - 1 };
     });
     downVoteArticle(article.article_id).catch(() => {
@@ -37,11 +39,15 @@ const ArticleCard = (singleArticle) => {
     return article;
   };
 
+  const linkPath = `/articles/read-article/${article_id}`;
+
   return (
     <li className={styles.card__articleContainer}>
-      <h2 className={styles.h2__articleTitle}>{article.title}</h2>
-      <h3 className={styles.h3__articleAuthor}>{article.author}</h3>
-      <h4 className={styles.h4__articleDate}>{formattedDate}</h4>
+      <Link className={styles.link__articleTitle} to={linkPath}>
+        <h2 className={styles.h2__articleTitle}>{article.title}</h2>
+        <h3 className={styles.h3__articleAuthor}>{article.author}</h3>
+        <h4 className={styles.h4__articleDate}>{formattedDate}</h4>
+      </Link>
       <div className={styles.div__articleImgWrapper}>
         <img
           className={styles.img__articleImg}
