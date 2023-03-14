@@ -1,11 +1,6 @@
 import styles from '../styles/ArticleCard.module.css';
 import formatDate from '../utils/ArticleCard.utils';
-import {
-  TfiComment,
-  TfiAngleDown,
-  TfiAngleUp,
-  TfiTrash,
-} from 'react-icons/tfi';
+import { TfiComment, TfiAngleDown, TfiAngleUp } from 'react-icons/tfi';
 import { upVoteArticle, downVoteArticle } from '../utils/api';
 import { useState } from 'react';
 
@@ -15,8 +10,8 @@ const ArticleCard = (singleArticle) => {
   const formattedDate = formatDate(article.created_at);
 
   const upVote = () => {
-    setArticle((article) => {
-      return { ...article, votes: article.votes + 1 };
+    setArticle((currentArticle) => {
+      return { ...currentArticle, votes: article.votes + 1 };
     });
     upVoteArticle(article.article_id).catch(() => {
       setArticle((currentArticle) => {
@@ -29,12 +24,12 @@ const ArticleCard = (singleArticle) => {
   };
 
   const downVote = () => {
-    setArticle((article) => {
-      return { ...article, votes: article.votes - 1 };
+    setArticle((currentArticle) => {
+      return { ...currentArticle, votes: article.votes - 1 };
     });
     downVoteArticle(article.article_id).catch(() => {
+      setIsError(true);
       setArticle((currentArticle) => {
-        setIsError(true);
         return { ...currentArticle, votes: article.votes + 1 };
       });
       return article;
@@ -51,16 +46,24 @@ const ArticleCard = (singleArticle) => {
         <img
           className={styles.img__articleImg}
           src={article.article_img_url}
-          alt="linked to article"
+          alt={article.title}
         />
       </div>
       <section className={styles.div__articleInfo}>
         <div className={styles.container__articleVotes}>
-          <button className={styles.btn__downVote} aria-label='down vote article' onClick={() => downVote()}>
+          <button
+            className={styles.btn__downVote}
+            aria-label="down vote article"
+            onClick={() => downVote()}
+          >
             <TfiAngleDown className={styles.svg__downVote} />
           </button>
           <span className={styles.counter__numberVote}>{article.votes}</span>
-          <button className={styles.btn__upVote} aria-label='up vote article' onClick={() => upVote()}>
+          <button
+            className={styles.btn__upVote}
+            aria-label="up vote article"
+            onClick={() => upVote()}
+          >
             <TfiAngleUp className={styles.svg__upVote} />
           </button>
         </div>
@@ -71,7 +74,9 @@ const ArticleCard = (singleArticle) => {
         </div>
 
         <div className={styles.div__errorMessage}>
-          <p className={styles.p__errorMessage}>Problemo with vote</p>
+          {isError ? (
+            <p className={styles.p__errorMessage}>Vote problemo!</p>
+          ) : null}
         </div>
       </section>
     </li>

@@ -136,15 +136,16 @@
 }
 
 /* --------------------------------------------- */
-/* delete article  */
+/* error message  */
 
-.btn__articleDelete {
+.p__errorMessage {
   border: none;
   background-color: var(--clr-red);
-  width: 2em;
-  height: 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  line-height: 1.7;
+  width: 9em;
+  height: 1.75em;
+  padding: 0 0.5em;
 }
