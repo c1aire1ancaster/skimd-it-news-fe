@@ -26,7 +26,6 @@ const ArticleCard = (singleArticle) => {
 
   const downVote = () => {
     setArticle((currentArticle) => {
-  article_id,
       return { ...currentArticle, votes: article.votes - 1 };
     });
     downVoteArticle(article.article_id).catch(() => {
@@ -39,7 +38,7 @@ const ArticleCard = (singleArticle) => {
     return article;
   };
 
-  const linkPath = `/articles/read-article/${article_id}`;
+  const linkPath = `/articles/read-article/${article.article_id}`;
 
   return (
     <li className={styles.card__articleContainer}>
