@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticles } from '../utils/api';
 import ViewIndividualArticle from './ViewIndividualArticle';
 import styles from '../styles/IndividualArticle.module.css';
 
 const IndividualArticle = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  // const [article, setArticle] = useState({}),
-  // const {article_id} = useParams;
+  const [individualArticle, setIndividualArticle] = useState({});
+  const { article_id } = useParams();
+  // console.log(article_id);
 
   return (
     <section className={styles.container}>
-      <ViewIndividualArticle />
+      <ViewIndividualArticle article_id={article_id} />
     </section>
   );
 };

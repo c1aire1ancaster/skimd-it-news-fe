@@ -1,20 +1,23 @@
 import axios from 'axios';
 
-const newsSite = axios.create({
+const newsApi = axios.create({
   baseURL: 'https://news-project-8i4e.onrender.com/api',
 });
 
 export const getArticles = (article_id) => {
-  let path = './articles';
+  let path = '/articles';
 
-  console.log(article_id);
-  // if (article_id) {
-  //   path += `/${article_id}`
-  // }
+  if (article_id) {
+    path += `/${article_id}`;
+  }
 
-  return newsSite
-    .get(path, { params: { article_id: article_id } })
-    .then(({ data }) => {
-      console.log(data, '<in api');
-    });
+  return newsApi.get(path).then(({ data }) => {
+    return data.articles;
+  });
+};
+
+export const getUser = (author) => {
+  return newsApi.get(`/users/${author}`).then(({ data }) => {
+    return data.users.avatar_url;
+  });
 };
