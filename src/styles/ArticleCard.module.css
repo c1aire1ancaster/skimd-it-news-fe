@@ -15,6 +15,11 @@
   list-style: none;
 }
 
+.link__articleTitle {
+  text-decoration: none;
+  color: var(--clr-dark);
+}
+
 .h2__articleTitle {
   text-transform: uppercase;
   font-size: var(--fs-300);
