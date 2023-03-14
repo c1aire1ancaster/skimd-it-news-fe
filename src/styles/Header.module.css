@@ -15,6 +15,11 @@
   position: relative;
 }
 
+.link__websiteTitle {
+  text-decoration: none;
+  color: var(--fs-dark);
+}
+
 .title__website {
   text-transform: uppercase;
   letter-spacing: var(--ls-5);
