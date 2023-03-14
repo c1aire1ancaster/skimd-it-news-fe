@@ -1,7 +1,7 @@
 import styles from '../styles/ArticleCard.module.css';
 import formatDate from '../utils/ArticleCard.utils';
 import { Link } from 'react-router-dom';
-import { TfiComment, TfiAngleDown, TfiAngleUp } from 'react-icons/tfi';
+import { TfiComment, TfiAngleDown, TfiAngleUp, TfiTag } from 'react-icons/tfi';
 import { upVoteArticle, downVoteArticle } from '../utils/api';
 import { useState } from 'react';
 
@@ -55,33 +55,40 @@ const ArticleCard = (singleArticle) => {
         />
       </div>
       <section className={styles.div__articleInfo}>
-        <div className={styles.container__articleVotes}>
-          <button
-            className={styles.btn__downVote}
-            aria-label="down vote article"
-            onClick={() => downVote()}
-          >
-            <TfiAngleDown className={styles.svg__downVote} />
-          </button>
-          <span className={styles.counter__numberVote}>{article.votes}</span>
-          <button
-            className={styles.btn__upVote}
-            aria-label="up vote article"
-            onClick={() => upVote()}
-          >
-            <TfiAngleUp className={styles.svg__upVote} />
-          </button>
-        </div>
+        {isError ? (
+          <div className={styles.div__errorMessage}>
+            {isError ? (
+              <p className={styles.p__errorMessage}>Vote problemo!</p>
+            ) : null}
+          </div>
+        ) : (
+          <div className={styles.container__articleVotes}>
+            <button
+              className={styles.btn__downVote}
+              aria-label="down vote article"
+              onClick={() => downVote()}
+            >
+              <TfiAngleDown className={styles.svg__downVote} />
+            </button>
+            <span className={styles.counter__numberVote}>{article.votes}</span>
+            <button
+              className={styles.btn__upVote}
+              aria-label="up vote article"
+              onClick={() => upVote()}
+            >
+              <TfiAngleUp className={styles.svg__upVote} />
+            </button>
+          </div>
+        )}
 
         <div className={styles.link__commentCount}>
           <TfiComment className={styles.svg__commentCount} />
           <p className={styles.p__commentCount}>{article.comment_count}</p>
         </div>
 
-        <div className={styles.div__errorMessage}>
-          {isError ? (
-            <p className={styles.p__errorMessage}>Vote problemo!</p>
-          ) : null}
+        <div className={styles.link__topic}>
+          <TfiTag className={styles.svg__topicTag} />
+          <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
         </div>
       </section>
     </li>
