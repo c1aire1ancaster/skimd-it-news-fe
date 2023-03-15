@@ -21,3 +21,20 @@ export const getUser = (author) => {
     return data.users.avatar_url;
   });
 };
+
+
+export const upVoteArticle = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: 1 })
+    .then(({ data }) => {
+      return data.updatedArticle;
+    });
+};
+
+export const downVoteArticle = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: -1 })
+    .then(({ data }) => {
+      return data.updatedArticle;
+    });
+};
