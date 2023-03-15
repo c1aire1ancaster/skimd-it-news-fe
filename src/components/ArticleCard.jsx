@@ -38,7 +38,7 @@ const ArticleCard = (singleArticle) => {
     return article;
   };
 
-  const linkPath = `/articles/read-article/${article.article_id}`;
+  const linkPath = `/article/${article.article_id}`;
 
   return (
     <li className={styles.card__articleContainer}>
