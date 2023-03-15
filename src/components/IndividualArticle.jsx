@@ -177,7 +177,10 @@ const IndividualArticle = () => {
           </div>
         </section>
       </section>
-      <CommentList article_id={article_id} comment_count={comment_count}/>
+      <CommentList
+        article_id={article_id}
+        comment_count={article.comment_count}
+      />
     </section>
   );
 };

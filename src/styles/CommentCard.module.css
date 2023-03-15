@@ -1,0 +1,137 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card__commentContainer {
+  list-style: none;
+  border: 3px solid var(--clr-dark);
+  margin: 0 0.3em;
+}
+
+@media (min-width: 720px) {
+  .card__commentContainer {
+    width: 45em;
+    border: 3px solid var(--clr-dark);
+  }
+}
+
+.div__commentAuthor {
+  height: 2.5em;
+  position: relative;
+  padding: 1em 0 0.5em 0;
+}
+
+.div__commentAuthor .h3__commentAuthor {
+  position: absolute;
+  left: 2.25em;
+  bottom: 0.2em;
+}
+
+.image__commentAuthorAvatar {
+  -webkit-filter: saturate(0.7);
+  filter: saturate(0.7);
+  border: none;
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
+  position: absolute;
+  left: 0.5em;
+  bottom: 0.25em;
+}
+
+.h3__commentAuthor {
+  text-transform: lowercase;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-3);
+  line-height: 1;
+  padding: 0.4em 0.4em;
+}
+
+.h4__commentDate {
+  text-transform: uppercase;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-1);
+  line-height: 0.7;
+  padding: 0.4em 0.4em;
+}
+
+.p__commentBody {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  padding: 2em 0.4em;
+}
+
+/* --------------------------------------------- */
+/* comment info bar  */
+
+.section__commentInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4em;
+  padding: 0.5em 0.45em;
+}
+
+.counter__articleVotes {
+  font-size: var(--fs-100);
+}
+
+/* --------------------------------------------- */
+/* comment vote count  */
+
+.container__commentVotes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--clr-purple);
+  max-height: 1.5em;
+  max-width: 8em;
+}
+
+.btn__downVote,
+.btn__upVote {
+  background-color: var(--clr-purple);
+  border: none;
+  height: 1em;
+  width: 1.3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg__downVote,
+.svg__upVote {
+  height: 0.75em;
+  width: 0.75em;
+}
+
+.counter__numberVote {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-1);
+  margin: 0.1em;
+  padding: 0 0 0 0.1em;
+}
+
+/* --------------------------------------------- */
+/* error message  */
+
+.p__errorMessage {
+  border: none;
+  background-color: var(--clr-red);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  line-height: 1.7;
+  width: 9em;
+  height: 1.75em;
+  padding: 0 0.5em;
+}
