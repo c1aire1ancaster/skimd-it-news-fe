@@ -2,7 +2,7 @@ import styles from '../styles/Header.module.css';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const linkPath = `/articles`;
+  const linkPath = `/`;
   return (
     <header className={styles.container__header}>
       <Link className={styles.link__websiteTitle} to={linkPath}>

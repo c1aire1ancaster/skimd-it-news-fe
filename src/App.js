@@ -9,11 +9,8 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/articles" element={<ArticleList />} />
-        <Route
-          path="/articles/read-article/:article_id"
-          element={<IndividualArticle />}
-        />
+        <Route path="/" element={<ArticleList />} />
+        <Route path="/article/:article_id" element={<IndividualArticle />} />
       </Routes>
     </div>
   );

@@ -22,6 +22,23 @@ export const getUser = (author) => {
   });
 };
 
+
+export const upVoteArticle = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: 1 })
+    .then(({ data }) => {
+      return data.updatedArticle;
+    });
+};
+
+export const downVoteArticle = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: -1 })
+    .then(({ data }) => {
+      return data.updatedArticle;
+    });
+};
+
 export const getComments = (comment_id) => {
   return newsApi.get(`/articles/${comment_id}/comments`).then(({data}) => {
     console.log(data);
