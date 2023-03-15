@@ -21,3 +21,9 @@ export const getUser = (author) => {
     return data.users.avatar_url;
   });
 };
+
+export const getComments = (comment_id) => {
+  return newsApi.get(`/articles/${comment_id}/comments`).then(({data}) => {
+    console.log(data);
+  })
+}
