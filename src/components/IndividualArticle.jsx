@@ -10,7 +10,7 @@ import {
   TfiComment,
   TfiAngleDown,
   TfiAngleUp,
-  TfiTrash,
+  TfiThumbUp,
 } from 'react-icons/tfi';
 
 const IndividualArticle = () => {
@@ -18,6 +18,7 @@ const IndividualArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [article, setArticle] = useState({});
+  const [userVote, setUserVote] = useState(0);
   const [userAvatarImg, setUserAvatarImg] = useState('');
 
   useEffect(() => {
@@ -32,32 +33,34 @@ const IndividualArticle = () => {
     });
   }, [article_id]);
 
-  const upVote = () => {
-    setArticle((currentArticle) => {
-      return { ...currentArticle, votes: article.votes + 1 };
-    });
-    upVoteArticle(article.article_id).catch(() => {
-      setArticle((currentArticle) => {
-        setIsError(true);
-        return { ...currentArticle, votes: article.votes - 1 };
-      });
-      return article;
-    });
-    return article;
-  };
-
   const downVote = () => {
     setArticle((currentArticle) => {
       return { ...currentArticle, votes: article.votes - 1 };
     });
+    setUserVote(1);
+    setIsError(false);
     downVoteArticle(article.article_id).catch(() => {
+      setUserVote(0);
       setIsError(true);
       setArticle((currentArticle) => {
-        return { ...currentArticle, votes: article.votes + 1 };
+        return { ...currentArticle, votes: article.votes };
       });
-      return article;
     });
-    return article;
+  };
+
+  const upVote = () => {
+    setArticle((currentArticle) => {
+      return { ...currentArticle, votes: article.votes + 1 };
+    });
+    setUserVote(1);
+    setIsError(false);
+    upVoteArticle(article.article_id).catch(() => {
+      setUserVote(0);
+      setIsError(true);
+      setArticle((currentArticle) => {
+        return { ...currentArticle, votes: article.votes };
+      });
+    });
   };
 
   return isLoading ? (
@@ -78,33 +81,25 @@ const IndividualArticle = () => {
           />
         </div>
         <section className={styles.div__articleInfo}>
-          {isError ? (
-            <div className={styles.div__errorMessage}>
-              {isError ? (
-                <p className={styles.p__errorMessage}>Vote problemo!</p>
-              ) : null}
-            </div>
-          ) : (
-            <div className={styles.container__articleVotes}>
-              <button
-                className={styles.btn__downVote}
-                aria-label="down vote article"
-                onClick={() => downVote()}
-              >
-                <TfiAngleDown className={styles.svg__downVote} />
-              </button>
-              <span className={styles.counter__numberVote}>
-                {article.votes}
-              </span>
-              <button
-                className={styles.btn__upVote}
-                aria-label="up vote article"
-                onClick={() => upVote()}
-              >
-                <TfiAngleUp className={styles.svg__upVote} />
-              </button>
-            </div>
-          )}
+          <div className={styles.container__articleVotes}>
+            <button
+              className={styles.btn__downVote}
+              aria-label="down vote article"
+              onClick={() => downVote()}
+              disabled={userVote !== 0}
+            >
+              <TfiAngleDown className={styles.svg__downVote} />
+            </button>
+            <span className={styles.counter__numberVote}>{article.votes}</span>
+            <button
+              className={styles.btn__upVote}
+              aria-label="up vote article"
+              onClick={() => upVote()}
+              disabled={userVote !== 0}
+            >
+              <TfiAngleUp className={styles.svg__upVote} />
+            </button>
+          </div>
 
           <div className={styles.link__commentCount}>
             <TfiComment className={styles.svg__commentCount} />
@@ -116,11 +111,19 @@ const IndividualArticle = () => {
             <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
           </div>
 
-          <div className={styles.form__articleDelete}>
-            <p className={styles.btn__articleDelete}>
-              <TfiTrash className={styles.svg__articleDelete} />
-            </p>
-          </div>
+          {isError ? (
+            <div className={styles.div__errorMessage}>
+              <p className={styles.p__errorMessage}>Vote problemo!</p>
+            </div>
+          ) : null}
+
+          {userVote ? (
+            <div className={styles.div__voteSuccess}>
+              <p className={styles.p__voteSuccess} aria-label="vote successful">
+                <TfiThumbUp /> for vote!
+              </p>
+            </div>
+          ) : null}
         </section>
         <p className={styles.p__articleBody}>{article.body}</p>
         <div className={styles.div__author}>
@@ -132,33 +135,25 @@ const IndividualArticle = () => {
           <h3 className={styles.h3__articleAuthor}>{article.author}</h3>
         </div>
         <section className={styles.div__articleInfo}>
-          {isError ? (
-            <div className={styles.div__errorMessage}>
-              {isError ? (
-                <p className={styles.p__errorMessage}>Vote problemo!</p>
-              ) : null}
-            </div>
-          ) : (
-            <div className={styles.container__articleVotes}>
-              <button
-                className={styles.btn__downVote}
-                aria-label="down vote article"
-                onClick={() => downVote()}
-              >
-                <TfiAngleDown className={styles.svg__downVote} />
-              </button>
-              <span className={styles.counter__numberVote}>
-                {article.votes}
-              </span>
-              <button
-                className={styles.btn__upVote}
-                aria-label="up vote article"
-                onClick={() => upVote()}
-              >
-                <TfiAngleUp className={styles.svg__upVote} />
-              </button>
-            </div>
-          )}
+          <div className={styles.container__articleVotes}>
+            <button
+              className={styles.btn__downVote}
+              aria-label="down vote article"
+              onClick={() => downVote()}
+              disabled={userVote !== 0}
+            >
+              <TfiAngleDown className={styles.svg__downVote} />
+            </button>
+            <span className={styles.counter__numberVote}>{article.votes}</span>
+            <button
+              className={styles.btn__upVote}
+              aria-label="up vote article"
+              onClick={() => upVote()}
+              disabled={userVote !== 0}
+            >
+              <TfiAngleUp className={styles.svg__upVote} />
+            </button>
+          </div>
 
           <div className={styles.link__commentCount}>
             <TfiComment className={styles.svg__commentCount} />
@@ -169,12 +164,19 @@ const IndividualArticle = () => {
             <TfiTag className={styles.svg__topicTag} />
             <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
           </div>
+          {isError ? (
+            <div className={styles.div__errorMessage}>
+              <p className={styles.p__errorMessage}>Vote problemo!</p>
+            </div>
+          ) : null}
 
-          <div className={styles.form__articleDelete}>
-            <p className={styles.btn__articleDelete}>
-              <TfiTrash className={styles.svg__articleDelete} />
-            </p>
-          </div>
+          {userVote ? (
+            <div className={styles.div__voteSuccess}>
+              <p className={styles.p__voteSuccess} aria-label="vote successful">
+                <TfiThumbUp /> for vote!
+              </p>
+            </div>
+          ) : null}
         </section>
       </section>
       <CommentList

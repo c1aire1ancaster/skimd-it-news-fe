@@ -85,6 +85,13 @@
 /* --------------------------------------------- */
 /* comment vote count  */
 
+.section_commentVoteContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .container__commentVotes {
   display: flex;
   flex-direction: row;
@@ -122,6 +129,20 @@
 }
 
 /* --------------------------------------------- */
+/* delete article  */
+
+.btn__articleDelete {
+  border: none;
+  background-color: var(--clr-red);
+  width: 2em;
+  height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------------------------------- */
 /* error message  */
 
 .p__errorMessage {
@@ -133,5 +154,21 @@
   line-height: 1.7;
   width: 9em;
   height: 1.75em;
+  padding: 0 0.5em;
+}
+
+/* --------------------------------------------- */
+/* vote success message  */
+
+.p__voteSuccess {
+  border: none;
+  background-color: var(--clr-light-blue);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  line-height: 1.7;
+  width: 7em;
+  height: 1.75em;
+  margin: 0 0 0 0.5em;
   padding: 0 0.5em;
 }
