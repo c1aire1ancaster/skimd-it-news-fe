@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getArticleById, getUser } from '../utils/api';
 import formatDate from '../utils/ArticleCard.utils';
@@ -58,6 +59,7 @@ const IndividualArticle = () => {
     });
     return article;
   };
+  const linkPathToArticlesByTopic = `/articles/topic/${article.topic}`;
 
   return isLoading ? (
     <h2>Loading</h2>
@@ -110,10 +112,15 @@ const IndividualArticle = () => {
             <p className={styles.p__commentCount}>{article.comment_count}</p>
           </div>
 
-          <div className={styles.link__topic}>
-            <TfiTag className={styles.svg__topicTag} />
-            <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
-          </div>
+          <Link
+            className={styles.link__articleTopicTag}
+            to={linkPathToArticlesByTopic}
+          >
+            <div className={styles.link__topic}>
+              <TfiTag className={styles.svg__topicTag} />
+              <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
+            </div>
+          </Link>
 
           <div className={styles.form__articleDelete}>
             <p className={styles.btn__articleDelete}>
@@ -164,10 +171,15 @@ const IndividualArticle = () => {
             <p className={styles.p__commentCount}>{article.comment_count}</p>
           </div>
 
-          <div className={styles.link__topic}>
-            <TfiTag className={styles.svg__topicTag} />
-            <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
-          </div>
+          <Link
+            className={styles.link__articleTopicTag}
+            to={linkPathToArticlesByTopic}
+          >
+            <div className={styles.link__topic}>
+              <TfiTag className={styles.svg__topicTag} />
+              <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
+            </div>
+          </Link>
 
           <div className={styles.form__articleDelete}>
             <p className={styles.btn__articleDelete}>

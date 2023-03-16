@@ -6,23 +6,51 @@
   padding: 0;
 }
 
-.section__searchOptions {
-  height: 6em;
+/* --------------------------------------------- */
+/* article filter and sort menu  */
+
+.section__searchContainer {
+  height: 5em;
   position: relative;
 }
 
-.nav__topic {
-  font-size: var(--fs-200);
-  letter-spacing: var(--ls-3);
-  text-align: center;
-  padding: 0.4em 0.5em;
-  background-color: var(--clr-light-blue);
-  position: absolute;
-  top: 0.6em;
-  right: 0.7em;
+ul {
+  list-style: none;
 }
 
-.nav__sortAndOrder {
+link {
+  text-decoration: none;
+  color: var(--clr-dark);
+}
+
+.nav__searchOptions {
+  background-color: var(--clr-light-blue);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 2.4em;
+  padding: 0.2em 0.4em 0 0.4em;
+  /* width: 11em; */
+  /* padding: 0.2em 0.2em 0.2em 0.4em; */
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+}
+
+.h2__searchArticle {
+  font-size: var(--fs-200);
+  letter-spacing: var(--ls-3);
+  font-weight: var(--fw-200);
+  padding: 0 0 0.2em 0.5em;
+}
+
+.svg__searchArticle {
+  height: 1.75em;
+  width: 1.75em;
+}
+
+/* .nav__sortAndOrder {
   position: absolute;
   right: 0.7em;
   top: 3.5em;
@@ -32,7 +60,10 @@
   padding: 0.4em 0.5em;
   background-color: var(--clr-light-blue);
   border: none;
-}
+} */
+
+/* --------------------------------------------- */
+/* article card display setup  */
 
 .ul__articles {
   display: flex;
@@ -51,10 +82,10 @@
     max-width: 39.15em;
     margin: auto;
   }
-  .section__searchOptions {
+  /* .section__searchOptions {
     height: 9em;
     position: relative;
-  }
+  } */
 }
 
 @media (min-width: 1000px) {

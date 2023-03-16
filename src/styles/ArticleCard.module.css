@@ -28,6 +28,10 @@
   padding: 0.1em 0.3em 0 0.3em;
 }
 
+.h2__articleTitle:hover {
+  text-decoration: underline;
+}
+
 .h3__articleAuthor {
   text-transform: lowercase;
   font-size: var(--fs-200);
@@ -55,6 +59,12 @@
   width: 18em;
   margin: 0;
   padding: 0;
+  transition: filter 300ms;
+}
+
+.img__articleImg:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
 }
 
 /* --------------------------------------------- */
@@ -89,6 +99,10 @@
   max-width: 8em;
 }
 
+.container__articleVotes:hover {
+  cursor: pointer;
+}
+
 .btn__downVote,
 .btn__upVote {
   background-color: var(--clr-purple);
@@ -101,10 +115,21 @@
   align-items: center;
 }
 
+.btn__downVote:hover,
+.btn__upVote:hover {
+  cursor: pointer;
+}
+
 .svg__downVote,
 .svg__upVote {
   height: 0.75em;
   width: 0.75em;
+}
+
+.svg__downVote:hover,
+.svg__upVote:hover {
+  height: 1em;
+  width: 1em;
 }
 
 .counter__numberVote {
@@ -143,6 +168,11 @@
 /* --------------------------------------------- */
 /* topic  */
 
+.link__articleTopicTag {
+  text-decoration: none;
+  color: var(--clr-dark);
+}
+
 .link__topic {
   background-color: var(--clr-orange);
   max-height: 5em;
@@ -163,6 +193,10 @@
   font-weight: var(--fw-200);
   letter-spacing: var(--ls-2);
   padding: 0 0 0.2em 0.2em;
+}
+
+.h4__articleTopic:hover {
+  font-weight: var(--fw-300);
 }
 
 /* --------------------------------------------- */

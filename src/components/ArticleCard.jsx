@@ -38,11 +38,12 @@ const ArticleCard = (singleArticle) => {
     return article;
   };
 
-  const linkPath = `/article/${article.article_id}`;
+  const linkPathToArticle = `/article/${article.article_id}`;
+  const linkPathToArticlesByTopic = `/articles/topic/${article.topic}`;
 
   return (
     <li className={styles.card__articleContainer}>
-      <Link className={styles.link__articleTitle} to={linkPath}>
+      <Link className={styles.link__articleTitle} to={linkPathToArticle}>
         <h2 className={styles.h2__articleTitle}>{article.title}</h2>
         <h3 className={styles.h3__articleAuthor}>{article.author}</h3>
         <h4 className={styles.h4__articleDate}>{formattedDate}</h4>
@@ -51,7 +52,7 @@ const ArticleCard = (singleArticle) => {
         <img
           className={styles.img__articleImg}
           src={article.article_img_url}
-          alt={article.title}
+          alt={`related to ${article.title}`}
         />
       </div>
       <section className={styles.div__articleInfo}>
@@ -86,10 +87,18 @@ const ArticleCard = (singleArticle) => {
           <p className={styles.p__commentCount}>{article.comment_count}</p>
         </div>
 
-        <div className={styles.link__topic}>
-          <TfiTag className={styles.svg__topicTag} />
-          <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
-        </div>
+        <Link
+          className={styles.link__articleTopicTag}
+          to={linkPathToArticlesByTopic}
+        >
+          <div
+            className={styles.link__topic}
+            aria-label={`link to list of ${article.topic} articles`}
+          >
+            <TfiTag className={styles.svg__topicTag} />
+            <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
+          </div>
+        </Link>
       </section>
     </li>
   );

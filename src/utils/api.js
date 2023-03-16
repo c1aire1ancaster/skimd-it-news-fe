@@ -22,7 +22,6 @@ export const getUser = (author) => {
   });
 };
 
-
 export const upVoteArticle = (article_id) => {
   return newsApi
     .patch(`/articles/${article_id}`, { inc_votes: 1 })
@@ -37,4 +36,16 @@ export const downVoteArticle = (article_id) => {
     .then(({ data }) => {
       return data.updatedArticle;
     });
+};
+
+export const getTopics = () => {
+  return newsApi.get('/topics').then(({ data }) => {
+    return data.topics;
+  });
+};
+
+export const getArticlesByTopic = (topic) => {
+  return newsApi.get(`/articles?topic=${topic}`).then(({ data }) => {
+    return data.articles;
+  });
 };
