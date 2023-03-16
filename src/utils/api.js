@@ -38,6 +38,28 @@ export const downVoteArticle = (article_id) => {
     });
 };
 
+export const getComments = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments;
+  });
+};
+
+export const upVoteComment = (comment_id) => {
+  return newsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+    .then(({ data }) => {
+      return data.updatedComment;
+    });
+};
+
+export const downVoteComment = (comment_id) => {
+  return newsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: -1 })
+    .then(({ data }) => {
+      return data.updatedComment;
+    });
+};
+
 export const getTopics = () => {
   return newsApi.get('/topics').then(({ data }) => {
     return data.topics;

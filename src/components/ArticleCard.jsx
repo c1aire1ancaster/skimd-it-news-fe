@@ -1,41 +1,50 @@
 import styles from '../styles/ArticleCard.module.css';
 import formatDate from '../utils/ArticleCard.utils';
 import { Link } from 'react-router-dom';
-import { TfiComment, TfiAngleDown, TfiAngleUp, TfiTag } from 'react-icons/tfi';
+import {
+  TfiComment,
+  TfiAngleDown,
+  TfiAngleUp,
+  TfiTag,
+  TfiThumbUp,
+} from 'react-icons/tfi';
 import { upVoteArticle, downVoteArticle } from '../utils/api';
 import { useState } from 'react';
 
 const ArticleCard = (singleArticle) => {
   const [article, setArticle] = useState(singleArticle);
   const [isError, setIsError] = useState(false);
+  const [userVote, setUserVote] = useState(0);
   const formattedDate = formatDate(article.created_at);
-
-  const upVote = () => {
-    setArticle((currentArticle) => {
-      return { ...currentArticle, votes: article.votes + 1 };
-    });
-    upVoteArticle(article.article_id).catch(() => {
-      setArticle((currentArticle) => {
-        setIsError(true);
-        return { ...currentArticle, votes: article.votes - 1 };
-      });
-      return article;
-    });
-    return article;
-  };
 
   const downVote = () => {
     setArticle((currentArticle) => {
       return { ...currentArticle, votes: article.votes - 1 };
     });
+    setUserVote(1);
+    setIsError(false);
     downVoteArticle(article.article_id).catch(() => {
+      setUserVote(0);
       setIsError(true);
       setArticle((currentArticle) => {
-        return { ...currentArticle, votes: article.votes + 1 };
+        return { ...currentArticle, votes: article.votes };
       });
-      return article;
     });
-    return article;
+  };
+
+  const upVote = () => {
+    setArticle((currentArticle) => {
+      return { ...currentArticle, votes: article.votes + 1 };
+    });
+    setUserVote(1);
+    setIsError(false);
+    upVoteArticle(article.article_id).catch(() => {
+      setUserVote(0);
+      setIsError(true);
+      setArticle((currentArticle) => {
+        return { ...currentArticle, votes: article.votes };
+      });
+    });
   };
 
   const linkPathToArticle = `/article/${article.article_id}`;
@@ -54,33 +63,39 @@ const ArticleCard = (singleArticle) => {
           src={article.article_img_url}
           alt={`related to ${article.title}`}
         />
-      </div>
-      <section className={styles.div__articleInfo}>
+
         {isError ? (
-          <div className={styles.div__errorMessage}>
-            {isError ? (
-              <p className={styles.p__errorMessage}>Vote problemo!</p>
-            ) : null}
+          <p className={styles.p__errorMessage}>Vote problemo!</p>
+        ) : null}
+
+        {userVote ? (
+          <div className={styles.div__voteSuccess}>
+            <p className={styles.p__voteSuccess} aria-label="vote successful">
+              <TfiThumbUp /> for vote!
+            </p>
           </div>
-        ) : (
-          <div className={styles.container__articleVotes}>
-            <button
-              className={styles.btn__downVote}
-              aria-label="down vote article"
-              onClick={() => downVote()}
-            >
-              <TfiAngleDown className={styles.svg__downVote} />
-            </button>
-            <span className={styles.counter__numberVote}>{article.votes}</span>
-            <button
-              className={styles.btn__upVote}
-              aria-label="up vote article"
-              onClick={() => upVote()}
-            >
-              <TfiAngleUp className={styles.svg__upVote} />
-            </button>
-          </div>
-        )}
+        ) : null}
+      </div>
+      <section className={styles.section__articleInfo}>
+        <div className={styles.container__articleVotes}>
+          <button
+            className={styles.btn__downVote}
+            aria-label="down vote article"
+            onClick={() => downVote()}
+            disabled={userVote !== 0}
+          >
+            <TfiAngleDown className={styles.svg__downVote} />
+          </button>
+          <span className={styles.counter__numberVote}>{article.votes}</span>
+          <button
+            className={styles.btn__upVote}
+            aria-label="up vote article"
+            onClick={() => upVote()}
+            disabled={userVote !== 0}
+          >
+            <TfiAngleUp className={styles.svg__upVote} />
+          </button>
+        </div>
 
         <div className={styles.link__commentCount}>
           <TfiComment className={styles.svg__commentCount} />
