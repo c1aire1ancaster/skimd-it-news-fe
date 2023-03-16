@@ -63,7 +63,7 @@ const IndividualArticle = () => {
       });
     });
   };
-  const linkPathToArticlesByTopic = `/articles/topic/${article.topic}`;
+  const linkPathToArticlesByTopic = `/topic/${article.topic}`;
 
   return isLoading ? (
     <h2>Loading</h2>

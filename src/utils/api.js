@@ -67,7 +67,15 @@ export const getTopics = () => {
 };
 
 export const getArticlesByTopic = (topic) => {
-  return newsApi.get(`/articles?topic=${topic}`).then(({ data }) => {
-    return data.articles;
-  });
+  let path = `/articles`;
+
+  return newsApi
+    .get(path, {
+      params: {
+        topic: topic,
+      },
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
 };

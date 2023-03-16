@@ -20,13 +20,7 @@ const ArticleList = () => {
     <h1>Loading...</h1>
   ) : (
     <section className={styles.container__section}>
-      <section className={styles.section__searchContainer}>
-        <ArticleSearch />
-
-      {/* <h2 className={styles.h2__searchArticle}>search options</h2> */}
-      {/* <p className={styles.nav__sortAndOrder}>sort/order articles</p> */}
-      </section>
-
+      <ArticleSearch />
       <ul className={styles.ul__articles}>
         {articleList.map((article) => {
           return <ArticleCard key={article.article_id} {...article} />;
