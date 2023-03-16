@@ -22,7 +22,6 @@ export const getUser = (author) => {
   });
 };
 
-
 export const upVoteArticle = (article_id) => {
   return newsApi
     .patch(`/articles/${article_id}`, { inc_votes: 1 })
@@ -36,5 +35,27 @@ export const downVoteArticle = (article_id) => {
     .patch(`/articles/${article_id}`, { inc_votes: -1 })
     .then(({ data }) => {
       return data.updatedArticle;
+    });
+};
+
+export const getComments = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments;
+  });
+};
+
+export const upVoteComment = (comment_id) => {
+  return newsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+    .then(({ data }) => {
+      return data.updatedComment;
+    });
+};
+
+export const downVoteComment = (comment_id) => {
+  return newsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: -1 })
+    .then(({ data }) => {
+      return data.updatedComment;
     });
 };
