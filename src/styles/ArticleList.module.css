@@ -6,33 +6,8 @@
   padding: 0;
 }
 
-.section__searchOptions {
-  height: 6em;
-  position: relative;
-}
-
-.nav__topic {
-  font-size: var(--fs-200);
-  letter-spacing: var(--ls-3);
-  text-align: center;
-  padding: 0.4em 0.5em;
-  background-color: var(--clr-light-blue);
-  position: absolute;
-  top: 0.6em;
-  right: 0.7em;
-}
-
-.nav__sortAndOrder {
-  position: absolute;
-  right: 0.7em;
-  top: 3.5em;
-  cursor: pointer;
-  font-size: var(--fs-200);
-  letter-spacing: var(--ls-3);
-  padding: 0.4em 0.5em;
-  background-color: var(--clr-light-blue);
-  border: none;
-}
+/* --------------------------------------------- */
+/* article card display setup  */
 
 .ul__articles {
   display: flex;
@@ -51,10 +26,10 @@
     max-width: 39.15em;
     margin: auto;
   }
-  .section__searchOptions {
+  /* .section__searchOptions {
     height: 9em;
     position: relative;
-  }
+  } */
 }
 
 @media (min-width: 1000px) {

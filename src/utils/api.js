@@ -59,3 +59,23 @@ export const downVoteComment = (comment_id) => {
       return data.updatedComment;
     });
 };
+
+export const getTopics = () => {
+  return newsApi.get('/topics').then(({ data }) => {
+    return data.topics;
+  });
+};
+
+export const getArticlesByTopic = (topic) => {
+  let path = `/articles`;
+
+  return newsApi
+    .get(path, {
+      params: {
+        topic: topic,
+      },
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
