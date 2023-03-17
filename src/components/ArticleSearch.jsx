@@ -7,12 +7,6 @@ import { TfiMenu } from 'react-icons/tfi';
 const ArticleSearch = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    getTopics().then((topics) => {
-      setTopicList(topics);
-    });
-  }, []);
-
   return (
     <nav className={styles.nav__searchOptions}>
       <button className={styles.iconButton} onClick={() => setIsOpen(!isOpen)}>
