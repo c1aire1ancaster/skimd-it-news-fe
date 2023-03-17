@@ -7,8 +7,15 @@
 }
 
 .form__container {
-  width: 20em;
-  border: 1px solid red;
+  width: 100%;
+  padding: 0 0.35em;
+}
+
+@media (min-width: 720px) {
+  .form__container {
+    width: 45em;
+    margin: 3em 0;
+  }
 }
 
 .h2__postComment {
@@ -16,6 +23,11 @@
   font-weight: var(--fw-600);
   letter-spacing: var(--ls-3);
   text-transform: lowercase;
+  padding: 0 0 0 0.3em;
+}
+
+.section__writeComment {
+  margin: 1em 0 0.25em 0;
 }
 
 .label__postComment {
@@ -23,14 +35,21 @@
   font-weight: var(--fw-300);
   letter-spacing: var(--ls-2);
   text-transform: lowercase;
+  padding: 0.5em 0.5em 0.5em 0.35em;
 }
 
 .textarea__postComment {
-  width: 20em;
+  width: 100%;
   height: 10em;
   border: 3px solid var(--clr-dark);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
 }
 
 .btn__postComment {
-  margin: 0;
+  background-color: var(--clr-light-blue);
+  border: none;
+  padding: 0.35em 0.75em;
+  margin: 0 0 0 0.1em;
 }

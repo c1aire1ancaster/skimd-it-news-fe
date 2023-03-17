@@ -79,3 +79,10 @@ export const getArticlesByTopic = (topic) => {
       return data.articles;
     });
 };
+
+export const postComment = (newComment, article_id) => {
+  console.log(article_id, newComment);
+  return newsApi.post(`/api/articles/${article_id}/comments`, newComment).then(({data}) => {
+    console.log(data);
+  })
+}

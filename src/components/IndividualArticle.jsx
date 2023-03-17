@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
-import CommentList from './CommentList';
+import Comments from './Comments';
 import { Link } from 'react-router-dom';
 import PostComment from './PostComment';
 import { useEffect, useState } from 'react';
@@ -182,11 +182,7 @@ const IndividualArticle = () => {
           ) : null}
         </section>
       </section>
-      <PostComment article_id={article_id} />
-      <CommentList
-        article_id={article_id}
-        comment_count={article.comment_count}
-      />
+      <Comments article_id={article_id} comment_count={article.comment_count} />
     </section>
   );
 };
