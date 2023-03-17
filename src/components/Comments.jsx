@@ -30,7 +30,6 @@ const Comments = ({ article_id, comment_count }) => {
         </ul>
       </section>
     </section>
-
   );
 };
 

@@ -8,8 +8,6 @@ const PostComment = ({ article_id, setCommentList }) => {
   const [isPending, setIsPending] = useState(false);
   const [postSuccessful, setPostSuccessful] = useState(false);
 
-  
-
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsError(false);

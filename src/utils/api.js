@@ -24,7 +24,7 @@ export const getUser = (author) => {
 
 export const getUsers = () => {
   return newsApi.get('./users').then(({ data }) => {
-    console.log(data);
+    return data.users;
   });
 };
 
