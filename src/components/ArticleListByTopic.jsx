@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { getArticles } from '../utils/api';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { getArticlesByTopic } from '../utils/api';
 import ArticleCard from './ArticleCard';
 import ArticleSearch from './ArticleSearch';
 import styles from '../styles/ArticleList.module.css';
 
-const ArticleList = () => {
+const ArticleListByTopic = () => {
   const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { topic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles().then((articles) => {
+    getArticlesByTopic(topic).then((articles) => {
       setArticleList(articles);
       setIsLoading(false);
     });
-  }, []);
+  }, [topic]);
 
   return isLoading ? (
     <h1>Loading...</h1>
@@ -29,5 +31,4 @@ const ArticleList = () => {
     </section>
   );
 };
-
-export default ArticleList;
+export default ArticleListByTopic;

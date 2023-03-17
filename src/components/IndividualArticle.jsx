@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
 import CommentList from './CommentList';
+import { Link } from 'react-router-dom';
 import PostComment from './PostComment';
 import { useEffect, useState } from 'react';
 import { getArticleById, getUser } from '../utils/api';
@@ -63,6 +64,7 @@ const IndividualArticle = () => {
       });
     });
   };
+  const linkPathToArticlesByTopic = `/topic/${article.topic}`;
 
   return isLoading ? (
     <h2>Loading</h2>
@@ -107,10 +109,15 @@ const IndividualArticle = () => {
             <p className={styles.p__commentCount}>{article.comment_count}</p>
           </div>
 
-          <div className={styles.link__topic}>
-            <TfiTag className={styles.svg__topicTag} />
-            <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
-          </div>
+          <Link
+            className={styles.link__articleTopicTag}
+            to={linkPathToArticlesByTopic}
+          >
+            <div className={styles.link__topic}>
+              <TfiTag className={styles.svg__topicTag} />
+              <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
+            </div>
+          </Link>
 
           {isError ? (
             <div className={styles.div__errorMessage}>
@@ -165,11 +172,6 @@ const IndividualArticle = () => {
             <TfiTag className={styles.svg__topicTag} />
             <h4 className={styles.h4__articleTopic}>{article.topic}</h4>
           </div>
-          {isError ? (
-            <div className={styles.div__errorMessage}>
-              <p className={styles.p__errorMessage}>Vote problemo!</p>
-            </div>
-          ) : null}
 
           {userVote ? (
             <div className={styles.div__voteSuccess}>

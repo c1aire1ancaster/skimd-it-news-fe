@@ -3,6 +3,7 @@ import './styles/App.module.css';
 import Header from './components/Header';
 import ArticleList from './components/ArticleList';
 import IndividualArticle from './components/IndividualArticle';
+import ArticleListByTopic from './components/ArticleListByTopic';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ArticleList />} />
         <Route path="/article/:article_id" element={<IndividualArticle />} />
+        <Route path="/topic/:topic" element={<ArticleListByTopic />} />
       </Routes>
     </div>
   );
