@@ -22,6 +22,12 @@ export const getUser = (author) => {
   });
 };
 
+export const getUsers = () => {
+  return newsApi.get('./users').then(({ data }) => {
+    console.log(data);
+  });
+};
+
 export const upVoteArticle = (article_id) => {
   return newsApi
     .patch(`/articles/${article_id}`, { inc_votes: 1 })
@@ -81,8 +87,10 @@ export const getArticlesByTopic = (topic) => {
 };
 
 export const postComment = (newComment, article_id) => {
-  console.log(article_id, newComment);
-  return newsApi.post(`/api/articles/${article_id}/comments`, newComment).then(({data}) => {
-    console.log(data);
-  })
-}
+  return newsApi
+    .post(`/articles/${article_id}/comments`, newComment)
+    .then(({ data }) => {
+      console.log(data);
+      return data.comment;
+    });
+};

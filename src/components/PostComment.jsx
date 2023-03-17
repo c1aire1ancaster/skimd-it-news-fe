@@ -4,42 +4,67 @@ import { useState } from 'react';
 
 const PostComment = ({ article_id, setCommentList }) => {
   const [commentBody, setCommentBody] = useState('');
-  const [newComment, setNewComment] = useState({});
-  // console.log(typeof Number(article_id));
+  const [isError, setIsError] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [postSuccessful, setPostSuccessful] = useState(false);
+
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setNewComment({author: 'grumpy19', body: commentBody});
-
-    postComment(newComment, Number(article_id)).then((newCommentFromApi) => {
-      setCommentList((currentCommentList) => [
-        ...currentCommentList,
-        newCommentFromApi,
-      ]);
-    });
-    // setCommentBody('');
+    setIsError(false);
+    setIsPending(true);
+    postComment({ author: 'grumpy19', body: commentBody }, Number(article_id))
+      .then((newCommentFromApi) => {
+        setIsPending(false);
+        setPostSuccessful(true);
+        setCommentList((currentCommentList) => [
+          ...currentCommentList,
+          newCommentFromApi,
+        ]);
+      })
+      .catch(() => {
+        setPostSuccessful(false);
+        setIsPending(false);
+        setIsError(true);
+      });
+    setCommentBody('');
   };
 
   return (
-    <form className={styles.form__container} onSubmit={handleSubmit}>
-      <h2 className={styles.h2__postComment}>add a comment...</h2>
+    <section className={styles.section__postCommentContainer}>
+      <form className={styles.form__container} onSubmit={handleSubmit}>
+        <h2 className={styles.h2__postComment}>add a comment...</h2>
 
-      <section className={styles.section__writeComment}>
-        <label className={styles.label__postComment} htmlFor="comment">
-          Scribble your thoughts here:
-          <textarea
-            value={commentBody}
-            className={styles.textarea__postComment}
-            id="comment"
-            onChange={(event) => setCommentBody(event.target.value)}
-          ></textarea>
-        </label>
-      </section>
+        <section className={styles.section__writeComment}>
+          <label className={styles.label__postComment} htmlFor="comment">
+            Scribble your thoughts here:
+            <textarea
+              value={commentBody}
+              className={styles.textarea__postComment}
+              id="comment"
+              onChange={(event) => setCommentBody(event.target.value)}
+            ></textarea>
+          </label>
+        </section>
 
-      <button className={styles.btn__postComment} type="submit">
-        share
-      </button>
-    </form>
+        <button className={styles.btn__postComment} type="submit">
+          share
+        </button>
+      </form>
+
+      {isPending ? (
+        <p className={styles.p__postPending}>Hmm... Hang on...</p>
+      ) : null}
+
+      {postSuccessful ? (
+        <p className={styles.p__postSuccessful}>Yay! It's shared</p>
+      ) : null}
+
+      {isError ? (
+        <p className={styles.p__postError}>Oh dear! Try again...</p>
+      ) : null}
+    </section>
   );
 };
 

@@ -5,6 +5,10 @@
   margin: 0;
   padding: 0;
 }
+.section__postCommentContainer {
+  height: 20em;
+  position: relative;
+}
 
 .form__container {
   width: 100%;
@@ -49,7 +53,39 @@
 
 .btn__postComment {
   background-color: var(--clr-light-blue);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
   border: none;
   padding: 0.35em 0.75em;
   margin: 0 0 0 0.1em;
+}
+
+.p__postPending,
+.p__postSuccessful,
+.p__postError {
+  text-transform: lowercase;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+  text-align: center;
+  padding: 0.35em 0.75em;
+  position: absolute;
+  bottom: 5.25em;
+  left: 5.75em;
+}
+
+.p__postPending {
+  background-color: var(--clr-orange);
+  width: 12em;
+}
+
+.p__postSuccessful {
+  background-color: var(--clr-green);
+  width: 12em;
+}
+
+.p__postError {
+  background-color: var(--clr-red);
+  width: 13.75em;
 }
