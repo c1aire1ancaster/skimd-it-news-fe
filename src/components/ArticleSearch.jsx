@@ -1,6 +1,5 @@
 import styles from '../styles/ArticleSearch.module.css';
-import { useEffect, useState } from 'react';
-import { getTopics } from '../utils/api';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TfiMenu } from 'react-icons/tfi';
 
