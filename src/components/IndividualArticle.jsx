@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
 import CommentList from './CommentList';
+import PostComment from './PostComment';
 import { useEffect, useState } from 'react';
 import { getArticleById, getUser } from '../utils/api';
 import formatDate from '../utils/ArticleCard.utils';
@@ -179,6 +180,7 @@ const IndividualArticle = () => {
           ) : null}
         </section>
       </section>
+      <PostComment article_id={article_id} />
       <CommentList
         article_id={article_id}
         comment_count={article.comment_count}

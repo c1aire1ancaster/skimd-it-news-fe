@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.form__container {
+  width: 20em;
+  border: 1px solid red;
+}
+
+.h2__postComment {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-600);
+  letter-spacing: var(--ls-3);
+  text-transform: lowercase;
+}
+
+.label__postComment {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+  text-transform: lowercase;
+}
+
+.textarea__postComment {
+  width: 20em;
+  height: 10em;
+  border: 3px solid var(--clr-dark);
+}
+
+.btn__postComment {
+  margin: 0;
+}
