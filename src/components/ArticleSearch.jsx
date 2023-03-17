@@ -1,18 +1,10 @@
 import styles from '../styles/ArticleSearch.module.css';
-import { useEffect, useState } from 'react';
-import { getTopics } from '../utils/api';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TfiMenu } from 'react-icons/tfi';
 
 const ArticleSearch = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [topicList, setTopicList] = useState([]);
-
-  useEffect(() => {
-    getTopics().then((topics) => {
-      setTopicList(topics);
-    });
-  }, []);
 
   return (
     <nav className={styles.nav__searchOptions}>
