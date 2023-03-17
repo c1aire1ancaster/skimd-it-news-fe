@@ -6,7 +6,6 @@ import { TfiMenu } from 'react-icons/tfi';
 
 const ArticleSearch = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [topicList, setTopicList] = useState([]);
 
   useEffect(() => {
     getTopics().then((topics) => {
