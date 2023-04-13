@@ -6,6 +6,7 @@ import PostComment from './PostComment';
 
 const Comments = ({ article_id, comment_count }) => {
   const [commentList, setCommentList] = useState([]);
+  const [commentCount, setCommentCount] = useState(comment_count);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -20,9 +21,13 @@ const Comments = ({ article_id, comment_count }) => {
     <h1>Loading...</h1>
   ) : (
     <section>
-      <PostComment article_id={article_id} setCommentList={setCommentList} />
+      <PostComment
+        article_id={article_id}
+        setCommentList={setCommentList}
+        setCommentCount={setCommentCount}
+      />
       <section className={styles.section__commentContainer}>
-        <h2 className={styles.h2__commentsTitle}>{comment_count} Comments</h2>
+        <h2 className={styles.h2__commentsTitle}>{commentCount} Comments</h2>
         <ul className={styles.ul__comments}>
           {commentList.map((comment) => {
             return <CommentCard key={comment.comment_id} {...comment} />;

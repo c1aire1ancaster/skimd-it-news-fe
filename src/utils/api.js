@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const newsApi = axios.create({
-  baseURL: 'https://news-project-8i4e.onrender.com/api',
+  baseURL: 'https://skimd-it.onrender.com/api',
 });
 
 export const getArticles = () => {
   return newsApi.get('/articles').then(({ data }) => {
+    console.log(data);
     return data.articles;
   });
 };

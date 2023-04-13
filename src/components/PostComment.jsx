@@ -2,7 +2,7 @@ import styles from '../styles/PostComment.module.css';
 import { postComment } from '../utils/api';
 import { useState } from 'react';
 
-const PostComment = ({ article_id, setCommentList }) => {
+const PostComment = ({ article_id, setCommentList, setCommentCount }) => {
   const [commentBody, setCommentBody] = useState('');
   const [isError, setIsError] = useState(false);
   const [isPending, setIsPending] = useState(false);
@@ -16,10 +16,16 @@ const PostComment = ({ article_id, setCommentList }) => {
       .then((newCommentFromApi) => {
         setIsPending(false);
         setPostSuccessful(true);
+        setTimeout(() => {
+          setPostSuccessful(false);
+        }, 6000);
         setCommentList((currentCommentList) => [
           ...currentCommentList,
           newCommentFromApi,
         ]);
+        setCommentCount((currentCommentCount) => {
+          return currentCommentCount + 1;
+        });
       })
       .catch(() => {
         setPostSuccessful(false);
