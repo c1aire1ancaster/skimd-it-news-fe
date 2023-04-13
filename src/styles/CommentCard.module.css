@@ -9,13 +9,12 @@
 .card__commentContainer {
   list-style: none;
   border: 3px solid var(--clr-dark);
-  margin: 0 0.3em;
+  margin: 2em 0.3em;
 }
 
 @media (min-width: 720px) {
   .card__commentContainer {
     width: 45em;
-    border: 3px solid var(--clr-dark);
   }
 }
 

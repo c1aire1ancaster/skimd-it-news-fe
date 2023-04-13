@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.section__postCommentContainer {
+  height: 20em;
+  position: relative;
+}
+
+.form__container {
+  width: 100%;
+  padding: 0 0.35em;
+}
+
+@media (min-width: 720px) {
+  .form__container {
+    width: 45em;
+    margin: 3em 0;
+  }
+}
+
+.h2__postComment {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-600);
+  letter-spacing: var(--ls-3);
+  text-transform: lowercase;
+  padding: 0 0 0 0.3em;
+}
+
+.section__writeComment {
+  margin: 1em 0 0.25em 0;
+}
+
+.label__postComment {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+  text-transform: lowercase;
+  padding: 0.5em 0.5em 0.5em 0.35em;
+}
+
+.textarea__postComment {
+  width: 100%;
+  height: 10em;
+  border: 3px solid var(--clr-dark);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+}
+
+.btn__postComment {
+  background-color: var(--clr-light-blue);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+  border: none;
+  padding: 0.35em 0.75em;
+  margin: 0 0 0 0.1em;
+}
+
+.p__postPending,
+.p__postSuccessful,
+.p__postError {
+  text-transform: lowercase;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-300);
+  letter-spacing: var(--ls-2);
+  text-align: center;
+  padding: 0.35em 0.75em;
+  position: absolute;
+  bottom: 5.25em;
+  left: 5.75em;
+}
+
+.p__postPending {
+  background-color: var(--clr-orange);
+  width: 12em;
+}
+
+.p__postSuccessful {
+  background-color: var(--clr-green);
+  width: 12em;
+}
+
+.p__postError {
+  background-color: var(--clr-red);
+  width: 13.75em;
+}

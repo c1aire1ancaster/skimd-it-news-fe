@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const newsApi = axios.create({
-  baseURL: 'https://news-project-8i4e.onrender.com/api',
+  baseURL: 'https://skimd-it.onrender.com/api',
 });
 
 export const getArticles = () => {
   return newsApi.get('/articles').then(({ data }) => {
+    console.log(data);
     return data.articles;
   });
 };
@@ -19,6 +20,12 @@ export const getArticleById = (article_id) => {
 export const getUser = (author) => {
   return newsApi.get(`/users/${author}`).then(({ data }) => {
     return data.users.avatar_url;
+  });
+};
+
+export const getUsers = () => {
+  return newsApi.get('./users').then(({ data }) => {
+    return data.users;
   });
 };
 
@@ -77,5 +84,14 @@ export const getArticlesByTopic = (topic) => {
     })
     .then(({ data }) => {
       return data.articles;
+    });
+};
+
+export const postComment = (newComment, article_id) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, newComment)
+    .then(({ data }) => {
+      console.log(data);
+      return data.comment;
     });
 };
