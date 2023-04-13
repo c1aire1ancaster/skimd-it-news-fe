@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
 import Comments from './Comments';
 import { Link } from 'react-router-dom';
-import PostComment from './PostComment';
 import { useEffect, useState } from 'react';
 import { getArticleById, getUser } from '../utils/api';
 import formatDate from '../utils/ArticleCard.utils';
