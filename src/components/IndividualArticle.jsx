@@ -14,7 +14,7 @@ import {
   TfiThumbUp,
 } from 'react-icons/tfi';
 
-const IndividualArticle = () => {
+const IndividualArticle = ({ loggedInUser }) => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -22,6 +22,7 @@ const IndividualArticle = () => {
   const [userVote, setUserVote] = useState(0);
   const [userAvatarImg, setUserAvatarImg] = useState('');
 
+  console.log(loggedInUser, '<logged in user');
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((article) => {
