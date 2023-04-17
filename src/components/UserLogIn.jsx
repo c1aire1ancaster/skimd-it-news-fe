@@ -29,11 +29,14 @@ const UserLogIn = ({ setLoggedInUser }) => {
   };
 
   return (
-    <section>
-      <form className={styles.ulContainer__Users} onSubmit={handleSubmit}>
-        <label htmlFor="user">Hi there! Who are ya?</label>
+    <section className={styles.container__UserLogin}>
+      <form className={styles.ulContainer__UserLogin} onSubmit={handleSubmit}>
+        <label htmlFor="user" className={styles.label__UserLogin}>
+          Hi there! Who are ya?
+        </label>
         <select
           id="user"
+          className={styles.select__UserLogin}
           value={selectedUser}
           onChange={(event) => setSelectedUser(event.target.value)}
         >
@@ -49,7 +52,9 @@ const UserLogIn = ({ setLoggedInUser }) => {
             );
           })}
         </select>
-        <button type="submit">Login</button>
+        <button type="submit" className={styles.button__UserLogin}>
+          Login
+        </button>
       </form>
     </section>
   );
