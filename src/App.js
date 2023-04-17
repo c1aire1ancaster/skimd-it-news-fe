@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import './styles/App.module.css';
+import styles from './styles/App.module.css';
 import Header from './components/Header';
 import ArticleList from './components/ArticleList';
 import IndividualArticle from './components/IndividualArticle';
@@ -29,6 +29,12 @@ function App() {
           element={<IndividualArticle loggedInUser={loggedInUser} />}
         />
         <Route path="/topic/:topic" element={<ArticleListByTopic />} />
+        <Route
+          path="/*"
+          element={
+            <h2 className={styles.h1__errorMessage}>404 - page not found!</h2>
+          }
+        />
       </Routes>
     </div>
   );
