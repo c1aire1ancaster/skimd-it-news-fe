@@ -22,7 +22,6 @@ const IndividualArticle = ({ loggedInUser }) => {
   const [userVote, setUserVote] = useState(0);
   const [userAvatarImg, setUserAvatarImg] = useState('');
 
-  console.log(loggedInUser, '<logged in user');
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((article) => {
@@ -182,7 +181,11 @@ const IndividualArticle = ({ loggedInUser }) => {
           ) : null}
         </section>
       </section>
-      <Comments article_id={article_id} comment_count={article.comment_count} />
+      <Comments
+        article_id={article_id}
+        comment_count={article.comment_count}
+        loggedInUser={loggedInUser}
+      />
     </section>
   );
 };

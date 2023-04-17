@@ -8,22 +8,27 @@ import ArticleListByTopic from './components/ArticleListByTopic';
 import UserLogIn from './components/UserLogIn';
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState('harry');
+  const [loggedInUser, setLoggedInUser] = useState({
+    username: 'tickle122',
+    name: 'Tom Tickle',
+    avatar_url:
+      'https://vignette.wikia.nocookie.net/mrmen/images/d…r-Tickle-9a.png/revision/latest?cb=20180127221953',
+  });
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<ArticleList />} />
+        <Route
+          path="/"
+          element={<UserLogIn setLoggedInUser={setLoggedInUser} />}
+        />
+        <Route path="/articles" element={<ArticleList />} />
         <Route
           path="/article/:article_id"
           element={<IndividualArticle loggedInUser={loggedInUser} />}
         />
         <Route path="/topic/:topic" element={<ArticleListByTopic />} />
-        <Route
-          path="/userlogin"
-          element={<UserLogIn setLoggedInUser={setLoggedInUser} />}
-        />
       </Routes>
     </div>
   );

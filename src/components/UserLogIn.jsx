@@ -1,5 +1,5 @@
 import styles from '../styles/UserLogIn.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getUsers } from '../utils/api';
 
@@ -7,18 +7,25 @@ const UserLogIn = ({ setLoggedInUser }) => {
   const [userList, setUserList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
     getUsers().then((users) => {
+      setLoggedInUser(users[0]);
       setUserList(users);
       setIsLoading(false);
     });
-  }, []);
+  }, [setLoggedInUser]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoggedInUser(selectedUser);
+    userList.map((user) => {
+      if (user.username === selectedUser) {
+        setLoggedInUser(user);
+      }
+    });
+    navigate('/articles');
   };
 
   return (
@@ -30,9 +37,6 @@ const UserLogIn = ({ setLoggedInUser }) => {
           value={selectedUser}
           onChange={(event) => setSelectedUser(event.target.value)}
         >
-          <option disabled={true} value="">
-            Choose username
-          </option>
           {userList.map((user) => {
             return (
               <option

@@ -4,7 +4,7 @@ import { getComments } from '../utils/api';
 import CommentCard from './CommentCard';
 import PostComment from './PostComment';
 
-const Comments = ({ article_id, comment_count }) => {
+const Comments = ({ article_id, comment_count, loggedInUser }) => {
   const [commentList, setCommentList] = useState([]);
   const [commentCount, setCommentCount] = useState(comment_count);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +25,7 @@ const Comments = ({ article_id, comment_count }) => {
         article_id={article_id}
         setCommentList={setCommentList}
         setCommentCount={setCommentCount}
+        loggedInUser={loggedInUser}
       />
       <section className={styles.section__commentContainer}>
         <h2 className={styles.h2__commentsTitle}>{commentCount} Comments</h2>
