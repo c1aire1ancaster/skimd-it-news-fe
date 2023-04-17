@@ -1,6 +1,6 @@
 import styles from '../styles/Comments.module.css';
 import { useEffect, useState } from 'react';
-import { getComments } from '../utils/api';
+import { getComments } from '../api/api';
 import CommentCard from './CommentCard';
 import PostComment from './PostComment';
 
@@ -8,6 +8,8 @@ const Comments = ({ article_id, comment_count, loggedInUser }) => {
   const [commentList, setCommentList] = useState([]);
   const [commentCount, setCommentCount] = useState(comment_count);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { username } = loggedInUser;
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,7 +33,13 @@ const Comments = ({ article_id, comment_count, loggedInUser }) => {
         <h2 className={styles.h2__commentsTitle}>{commentCount} Comments</h2>
         <ul className={styles.ul__comments}>
           {commentList.map((comment) => {
-            return <CommentCard key={comment.comment_id} {...comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                singleComment={comment}
+                username={username}
+              />
+            );
           })}
         </ul>
       </section>

@@ -3,9 +3,9 @@ import styles from '../styles/IndividualArticle.module.css';
 import Comments from './Comments';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getArticleById, getUser } from '../utils/api';
+import { getArticleById, getUser } from '../api/api';
 import formatDate from '../utils/ArticleCard.utils';
-import { upVoteArticle, downVoteArticle } from '../utils/api';
+import { upVoteArticle, downVoteArticle } from '../api/api';
 import {
   TfiTag,
   TfiComment,

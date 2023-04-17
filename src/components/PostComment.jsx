@@ -1,5 +1,5 @@
 import styles from '../styles/PostComment.module.css';
-import { postComment } from '../utils/api';
+import { postComment } from '../api/api';
 import { useState } from 'react';
 
 const PostComment = ({
