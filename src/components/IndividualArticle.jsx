@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
 import Comments from './Comments';
 import { Link } from 'react-router-dom';
-import PostComment from './PostComment';
 import { useEffect, useState } from 'react';
 import { getArticleById, getUser } from '../utils/api';
 import formatDate from '../utils/ArticleCard.utils';
@@ -15,7 +14,7 @@ import {
   TfiThumbUp,
 } from 'react-icons/tfi';
 
-const IndividualArticle = () => {
+const IndividualArticle = ({ loggedInUser }) => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -182,7 +181,11 @@ const IndividualArticle = () => {
           ) : null}
         </section>
       </section>
-      <Comments article_id={article_id} comment_count={article.comment_count} />
+      <Comments
+        article_id={article_id}
+        comment_count={article.comment_count}
+        loggedInUser={loggedInUser}
+      />
     </section>
   );
 };
