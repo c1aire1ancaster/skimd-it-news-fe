@@ -1,7 +1,7 @@
 import styles from '../styles/UserLogIn.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUsers } from '../utils/api';
+import { getUsers } from '../api/api';
 
 const UserLogIn = ({ setLoggedInUser }) => {
   const [userList, setUserList] = useState([]);

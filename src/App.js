@@ -15,8 +15,6 @@ function App() {
       'https://vignette.wikia.nocookie.net/mrmen/images/d…r-Tickle-9a.png/revision/latest?cb=20180127221953',
   });
 
-  // console.log(loggedInUser, '<in app');
-
   return (
     <div className="App">
       <Header />

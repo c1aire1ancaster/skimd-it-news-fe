@@ -8,7 +8,7 @@ import {
   TfiTag,
   TfiThumbUp,
 } from 'react-icons/tfi';
-import { upVoteArticle, downVoteArticle } from '../utils/api';
+import { upVoteArticle, downVoteArticle } from '../api/api';
 import { useState } from 'react';
 
 const ArticleCard = (singleArticle) => {

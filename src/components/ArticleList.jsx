@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getArticles } from '../utils/api';
+import { getArticles } from '../api/api';
 import ArticleCard from './ArticleCard';
 import ArticleSearch from './ArticleSearch';
 import styles from '../styles/ArticleList.module.css';

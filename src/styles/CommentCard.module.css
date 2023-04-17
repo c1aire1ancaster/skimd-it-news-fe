@@ -6,8 +6,10 @@
   padding: 0;
 }
 
-.card__commentContainer {
+.li__commentCard {
   list-style: none;
+}
+.card__commentContainer {
   border: 3px solid var(--clr-dark);
   margin: 2em 0.3em;
 }
@@ -44,7 +46,7 @@
 .h3__commentAuthor {
   text-transform: lowercase;
   font-size: var(--fs-200);
-  font-weight: var(--fw-300);
+  font-weight: var(--fw-500);
   letter-spacing: var(--ls-3);
   line-height: 1;
   padding: 0.4em 0.4em;
@@ -140,10 +142,28 @@
   align-items: center;
 }
 
-/* --------------------------------------------- */
-/* error message  */
+.card__deletedCommentContainer {
+  border: 3px solid var(--clr-dark);
+  padding: auto;
+  margin: 2em 0.3em;
+  display: flex;
+  flex-direction: column;
+}
 
-.p__errorMessage {
+@media (min-width: 720px) {
+  .card__deletedCommentContainer {
+    width: 45em;
+  }
+}
+
+.h2__commentDeleted {
+  padding: 2em;
+}
+
+/* --------------------------------------------- */
+/* vote error message  */
+
+.p__voteErrorMessage {
   border: none;
   background-color: var(--clr-red);
   font-size: var(--fs-200);
@@ -151,8 +171,41 @@
   letter-spacing: var(--ls-1);
   line-height: 1.7;
   width: 9em;
-  height: 1.75em;
+  height: 1.72em;
   padding: 0 0.5em;
+  margin: 0.5em;
+}
+
+/* --------------------------------------------- */
+/* delete error message  */
+
+.p__deleteErrorMessage {
+  border: none;
+  background-color: var(--clr-red);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  line-height: 1.7;
+  width: 7.5em;
+  height: 1.72em;
+  padding: 0 0.5em;
+  margin: 0.5em;
+}
+
+/* --------------------------------------------- */
+/* delete pending message  */
+
+.p__deletePendingMessage {
+  border: none;
+  background-color: var(--clr-orange);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  line-height: 1.7;
+  width: 6.25em;
+  height: 1.72em;
+  padding: 0 0.5em;
+  margin: 0.5em;
 }
 
 /* --------------------------------------------- */
@@ -167,6 +220,6 @@
   line-height: 1.7;
   width: 7em;
   height: 1.75em;
-  margin: 0 0 0 0.5em;
+  margin: 0.5em 0;
   padding: 0 0.5em;
 }

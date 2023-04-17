@@ -66,6 +66,10 @@ export const downVoteComment = (comment_id) => {
     });
 };
 
+export const deleteCommentById = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
+};
+
 export const getTopics = () => {
   return newsApi.get('/topics').then(({ data }) => {
     return data.topics;
