@@ -5,9 +5,14 @@ const newsApi = axios.create({
 });
 
 export const getArticles = () => {
-  return newsApi.get('/articles').then(({ data }) => {
-    return data.articles;
-  });
+  return newsApi
+    .get('/articles')
+    .then(({ data }) => {
+      return data.articles;
+    })
+    .catch(() => {
+      console.log('no article');
+    });
 };
 
 export const getArticleById = (article_id) => {

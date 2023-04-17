@@ -120,3 +120,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+.h1__errorMessage {
+  padding: 1.5em;
+}
