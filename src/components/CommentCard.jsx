@@ -15,11 +15,20 @@ const CommentCard = (singleComment) => {
   const [isError, setIsError] = useState(false);
   const [comment, setComment] = useState(singleComment);
   const [userVote, setUserVote] = useState(0);
+  const [isAbleToDelete, setIsAbleToDelete] = useState(false);
+  // console.log(loggedInUser, '<in comment card');
+  // console.log(comment, '<comment');
 
   useEffect(() => {
-    getUser(comment.author).then((userAvatarUrl) => {
-      setUserAvatarImg(userAvatarUrl);
-    });
+    getUser(comment.author)
+      .then((userAvatarUrl) => {
+        setUserAvatarImg(userAvatarUrl);
+      })
+      .then(() => {
+        if (comment.author === 'grumpy19') {
+          setIsAbleToDelete(true);
+        }
+      });
   }, [comment.author]);
 
   const upVote = () => {
@@ -51,6 +60,8 @@ const CommentCard = (singleComment) => {
       });
     });
   };
+
+  const deleteComment = () => {};
 
   const formattedDateAndTime = formatDateAndTime(comment.created_at);
 
@@ -89,11 +100,23 @@ const CommentCard = (singleComment) => {
           </div>
         </div>
 
-        <div className={styles.form__articleDelete}>
+        {isAbleToDelete ? (
+          <div className={styles.form__articleDelete}>
+            <button
+              className={styles.btn__articleDelete}
+              aria-label="delete your comment"
+              onClick={() => deleteComment()}
+            >
+              <TfiTrash className={styles.svg__articleDelete} />
+            </button>
+          </div>
+        ) : null}
+
+        {/* <div className={styles.form__articleDelete}>
           <p className={styles.btn__articleDelete}>
             <TfiTrash className={styles.svg__articleDelete} />
           </p>
-        </div>
+        </div> */}
 
         {isError ? (
           <div className={styles.div__errorMessage}>

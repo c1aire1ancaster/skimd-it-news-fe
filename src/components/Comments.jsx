@@ -8,7 +8,7 @@ const Comments = ({ article_id, comment_count, loggedInUser }) => {
   const [commentList, setCommentList] = useState([]);
   const [commentCount, setCommentCount] = useState(comment_count);
   const [isLoading, setIsLoading] = useState(true);
-
+// console.log(loggedInUser, '<in comments');
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id).then((comments) => {
@@ -31,7 +31,12 @@ const Comments = ({ article_id, comment_count, loggedInUser }) => {
         <h2 className={styles.h2__commentsTitle}>{commentCount} Comments</h2>
         <ul className={styles.ul__comments}>
           {commentList.map((comment) => {
-            return <CommentCard key={comment.comment_id} {...comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                {...comment}
+              />
+            );
           })}
         </ul>
       </section>
