@@ -14,7 +14,7 @@ const ArticleSearch = () => {
 
       {isOpen ? (
         <ul className={styles.dropdown}>
-          <Link className={styles.link__topic} to="/">
+          <Link className={styles.link__topic} to="/articles">
             <li className={styles.li__topic}>all topics</li>
           </Link>
           <Link className={styles.link__topic} to="/topic/coding">
