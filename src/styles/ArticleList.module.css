@@ -41,3 +41,31 @@
     margin: 0 auto;
   }
 }
+
+.container__pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.p__next {
+  background-color: var(--clr-light-blue);
+  padding: 0.15em 0.15em 0.25em 0.25em;
+  width: 3.15em;
+  margin: 1.5em 0.25em;
+  line-height: 1.4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p__previous {
+  background-color: var(--clr-light-blue);
+  padding: 0.15em 0.15em 0.25em 0.25em;
+  width: 5.65em;
+  margin: 1.5em 0.25em;
+  line-height: 1.4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
