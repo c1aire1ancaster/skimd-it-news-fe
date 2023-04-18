@@ -36,15 +36,6 @@ const ArticleSearch = () => {
               </Link>
             );
           })}
-          {/* <Link className={styles.link__topic} to="/topic/coding">
-            <li className={styles.li__topic}>coding</li>
-          </Link>
-          <Link className={styles.link__topic} to="/topic/football">
-            <li className={styles.li__topic}>football</li>
-          </Link>
-          <Link className={styles.link__topic} to="/topic/cooking">
-            <li className={styles.li__topic}>cooking</li>
-          </Link> */}
         </ul>
       ) : null}
     </nav>
