@@ -1,9 +1,11 @@
 import styles from '../styles/UserLogIn.module.css';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getUsers } from '../api/api';
+import { LoggedInUserContext } from '../contexts/LoggedInUser';
 
-const UserLogIn = ({ setLoggedInUser }) => {
+const UserLogIn = () => {
+  const {loggedInUser, setLoggedInUser} = useContext(LoggedInUserContext);
   const [userList, setUserList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState('');
@@ -23,6 +25,7 @@ const UserLogIn = ({ setLoggedInUser }) => {
     userList.map((user) => {
       if (user.username === selectedUser) {
         setLoggedInUser(user);
+        console.log(loggedInUser);
       }
     });
     navigate('/articles');

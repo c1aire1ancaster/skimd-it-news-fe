@@ -18,13 +18,10 @@ const Comments = ({
 
   const { username } = loggedInUser;
 
-  console.log(maxPageNum, ' < maxpage');
-
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id).then((comments) => {
       setCommentList(comments);
-      // setMaxPageNum
       setIsLoading(false);
     });
   }, [article_id]);
