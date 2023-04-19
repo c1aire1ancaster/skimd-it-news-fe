@@ -121,6 +121,12 @@ select {
   }
 }
 
-.h1__errorMessage {
-  padding: 1.5em;
+.container__errorMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h2__errorMessage {
+  margin: 5em 0;
 }

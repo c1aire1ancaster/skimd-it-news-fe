@@ -17,6 +17,7 @@ import {
 const IndividualArticle = () => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [isArticleError, setIsArticleError] = useState(false);
   const [isError, setIsError] = useState(false);
   const [article, setArticle] = useState({});
   const [userVote, setUserVote] = useState(0);
@@ -25,15 +26,20 @@ const IndividualArticle = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getArticleById(article_id).then((article) => {
-      const { author } = article;
-      setArticle(article);
-      setCommentCount(article.comment_count);
-      setIsLoading(false);
-      getUser(author).then((userAvatarUrl) => {
-        setUserAvatarImg(userAvatarUrl);
+    getArticleById(article_id)
+      .then((article) => {
+        const { author } = article;
+        setArticle(article);
+        setCommentCount(article.comment_count);
+        setIsLoading(false);
+        getUser(author).then((userAvatarUrl) => {
+          setUserAvatarImg(userAvatarUrl);
+        });
+      })
+      .catch((error) => {
+        setIsArticleError(true);
+        setIsLoading(false);
       });
-    });
   }, [article_id]);
 
   const downVote = () => {
@@ -67,8 +73,16 @@ const IndividualArticle = () => {
   };
   const linkPathToArticlesByTopic = `/topic/${article.topic}`;
 
-  return isLoading ? (
-    <h2>Loading</h2>
+  return isArticleError ? (
+    <div className={styles.container__articleError}>
+      <h2 className={styles.h2__articleError}>
+        Sorry - we can't seem to find the article you're looking for...
+      </h2>
+    </div>
+  ) : isLoading ? (
+    <div className={styles.container__loading}>
+      <h2 className={styles.h2__loading}>Loading...</h2>
+    </div>
   ) : (
     <section className={styles.container}>
       <section className={styles.section__articleContainer}>

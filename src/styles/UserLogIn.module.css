@@ -6,6 +6,19 @@
   padding: 0;
 }
 
+.container__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h2__loading {
+  font-size: var(--fs-300);
+  padding: 1em;
+  margin: 3em 0 0 0;
+  width: 24em;
+}
+
 .ulContainer__UserLogin {
   display: flex;
   flex-direction: column;

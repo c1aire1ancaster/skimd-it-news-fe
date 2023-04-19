@@ -11,6 +11,7 @@ const ArticleList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
   const [maxPageNum, setMaxPageNum] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const topicQuery = searchParams.get('topic');
@@ -19,13 +20,16 @@ const ArticleList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topicQuery, sortByQuery, orderByQuery, pageNum).then(
-      (articles) => {
+    getArticles(topicQuery, sortByQuery, orderByQuery, pageNum)
+      .then((articles) => {
         setArticleList(articles.articles);
         setMaxPageNum(Math.ceil(articles.total_count / 10));
         setIsLoading(false);
-      }
-    );
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setErrorMessage(error.response.data.msg);
+      });
   }, [topicQuery, sortByQuery, orderByQuery, pageNum]);
 
   const goToNextPage = () => {
@@ -40,8 +44,14 @@ const ArticleList = () => {
     });
   };
 
-  return isLoading ? (
-    <h1>Loading...</h1>
+  return errorMessage ? (
+    <div className={styles.container__topicError}>
+      <h2 className={styles.h2__topicError}>{errorMessage}</h2>
+    </div>
+  ) : isLoading ? (
+    <div className={styles.container__loading}>
+      <h2 className={styles.h2__loading}>Loading...</h2>
+    </div>
   ) : (
     <div>
       <section className={styles.container__section}>

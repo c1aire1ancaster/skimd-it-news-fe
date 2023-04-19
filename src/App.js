@@ -16,7 +16,9 @@ function App() {
         <Route
           path="/*"
           element={
-            <h2 className={styles.h1__errorMessage}>404 - page not found!</h2>
+            <div className={styles.container__errorMessage}>
+              <h2 className={styles.h2__errorMessage}>404 - page not found!</h2>
+            </div>
           }
         />
       </Routes>
