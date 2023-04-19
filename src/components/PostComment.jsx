@@ -1,25 +1,20 @@
 import styles from '../styles/PostComment.module.css';
 import { postComment } from '../api/api';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { LoggedInUserContext } from '../contexts/LoggedInUser';
 
-const PostComment = ({
-  article_id,
-  setCommentList,
-  setCommentCount,
-  loggedInUser,
-}) => {
+const PostComment = ({ article_id, setCommentList, setCommentCount }) => {
+  const { loggedInUser } = useContext(LoggedInUserContext);
   const [commentBody, setCommentBody] = useState('');
   const [isError, setIsError] = useState(false);
   const [isPending, setIsPending] = useState(false);
   const [postSuccessful, setPostSuccessful] = useState(false);
 
-  let author = loggedInUser.username;
-
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsError(false);
     setIsPending(true);
-    postComment({ author, body: commentBody }, Number(article_id))
+    postComment({ author: loggedInUser, body: commentBody }, Number(article_id))
       .then((newCommentFromApi) => {
         setIsPending(false);
         setPostSuccessful(true);

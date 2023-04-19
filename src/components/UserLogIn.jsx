@@ -1,30 +1,25 @@
 import styles from '../styles/UserLogIn.module.css';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getUsers } from '../api/api';
+import { LoggedInUserContext } from '../contexts/LoggedInUser';
 
-const UserLogIn = ({ setLoggedInUser }) => {
+const UserLogIn = () => {
+  const { loggedInUser, setLoggedInUser } = useContext(LoggedInUserContext);
   const [userList, setUserList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedUser, setSelectedUser] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
     getUsers().then((users) => {
-      setLoggedInUser(users[0]);
       setUserList(users);
       setIsLoading(false);
     });
-  }, [setLoggedInUser]);
+  }, [setLoggedInUser, loggedInUser]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    userList.map((user) => {
-      if (user.username === selectedUser) {
-        setLoggedInUser(user);
-      }
-    });
     navigate('/articles');
   };
 
@@ -37,8 +32,8 @@ const UserLogIn = ({ setLoggedInUser }) => {
         <select
           id="user"
           className={styles.select__UserLogin}
-          value={selectedUser}
-          onChange={(event) => setSelectedUser(event.target.value)}
+          value={loggedInUser}
+          onChange={(event) => setLoggedInUser(event.target.value)}
         >
           {userList.map((user) => {
             return (

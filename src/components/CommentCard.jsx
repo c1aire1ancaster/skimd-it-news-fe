@@ -1,8 +1,9 @@
 import styles from '../styles/CommentCard.module.css';
 import { getUser } from '../api/api';
 import { upVoteComment, downVoteComment, deleteCommentById } from '../api/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import formatDateAndTime from '../utils/CommentCard.utils';
+import { LoggedInUserContext } from '../contexts/LoggedInUser';
 import {
   TfiAngleDown,
   TfiAngleUp,
@@ -10,7 +11,8 @@ import {
   TfiThumbUp,
 } from 'react-icons/tfi';
 
-const CommentCard = ({ singleComment, username }) => {
+const CommentCard = ({ singleComment }) => {
+  const { loggedInUser } = useContext(LoggedInUserContext);
   const [comment, setComment] = useState(singleComment);
   const [userAvatarImg, setUserAvatarImg] = useState('');
   const [userVote, setUserVote] = useState(0);
@@ -26,11 +28,11 @@ const CommentCard = ({ singleComment, username }) => {
         setUserAvatarImg(userAvatarUrl);
       })
       .then(() => {
-        if (comment.author === username) {
+        if (comment.author === loggedInUser) {
           setIsAbleToDelete(true);
         }
       });
-  }, [comment.author, username]);
+  }, [comment.author, loggedInUser]);
 
   const upVote = () => {
     setComment((currentComment) => {

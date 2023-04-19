@@ -1,30 +1,20 @@
 import styles from '../styles/Comments.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getComments } from '../api/api';
 import CommentCard from './CommentCard';
 import PostComment from './PostComment';
 import { TfiAngleRight, TfiAngleLeft } from 'react-icons/tfi';
 
-const Comments = ({
-  article_id,
-  commentCount,
-  setCommentCount,
-  loggedInUser,
-}) => {
+const Comments = ({ article_id, commentCount, setCommentCount }) => {
   const [commentList, setCommentList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
   const [maxPageNum, setMaxPageNum] = useState(Math.ceil(commentCount / 10));
 
-  const { username } = loggedInUser;
-
-  console.log(maxPageNum, ' < maxpage');
-
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id).then((comments) => {
       setCommentList(comments);
-      // setMaxPageNum
       setIsLoading(false);
     });
   }, [article_id]);
@@ -49,18 +39,13 @@ const Comments = ({
         article_id={article_id}
         setCommentList={setCommentList}
         setCommentCount={setCommentCount}
-        loggedInUser={loggedInUser}
       />
       <section className={styles.section__commentContainer}>
         <h2 className={styles.h2__commentsTitle}>{commentCount} Comments</h2>
         <ul className={styles.ul__comments}>
           {commentList.map((comment) => {
             return (
-              <CommentCard
-                key={comment.comment_id}
-                singleComment={comment}
-                username={username}
-              />
+              <CommentCard key={comment.comment_id} singleComment={comment} />
             );
           })}
         </ul>
@@ -73,7 +58,7 @@ const Comments = ({
           ) : (
             <button
               className={styles.button__previous}
-              aria-label="go to previous page of articles"
+              aria-label="go to previous page of comments"
               onClick={goToPreviousPage}
             >
               <TfiAngleLeft className={styles.svg__previousArticles} />
@@ -86,7 +71,7 @@ const Comments = ({
           ) : (
             <button
               className={styles.button__next}
-              aria-label="go to next page of articles"
+              aria-label="go to next page of comments"
               onClick={goToNextPage}
             >
               <TfiAngleRight className={styles.svg__nextArticles} />

@@ -14,7 +14,7 @@ import {
   TfiThumbUp,
 } from 'react-icons/tfi';
 
-const IndividualArticle = ({ loggedInUser }) => {
+const IndividualArticle = () => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -187,7 +187,6 @@ const IndividualArticle = ({ loggedInUser }) => {
         article_id={article_id}
         commentCount={commentCount}
         setCommentCount={setCommentCount}
-        loggedInUser={loggedInUser}
       />
     </section>
   );
