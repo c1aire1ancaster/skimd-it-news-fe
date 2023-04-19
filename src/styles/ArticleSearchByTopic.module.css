@@ -1,0 +1,22 @@
+.ul__topics {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1em 0 0 0;
+}
+
+.link__topic {
+  color: var(--clr-dark);
+  text-decoration: none;
+}
+
+.li__topic {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-500);
+  text-transform: uppercase;
+  padding: 0.15em 0.35em 0.15em 0.45em;
+  list-style: none;
+  margin: 0.15em 0.3em 0 0.3em;
+
+  background-color: var(--clr-light-blue);
+}

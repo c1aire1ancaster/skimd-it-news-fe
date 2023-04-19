@@ -7,23 +7,31 @@
 }
 
 .container__sortAndOrder {
-  padding: 2em;
+  padding: 1em 2em;
+  width: 20em;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: auto;
+}
+
+@media (min-width: 650px) {
+  .container__sortAndOrder {
+    width: 40em;
+  }
 }
 
 .label__sortBy,
 .label__orderBy {
   padding: 0 1em;
-  font-size: var(--fs-200);
+  font-size: var(--fs-100);
   font-weight: var(--fw-500);
   text-transform: uppercase;
 }
 
 .select__sortBy,
 .select__orderBy {
-  font-size: var(--fs-300);
+  font-size: var(--fs-100);
   letter-spacing: var(--ls-2);
   font-weight: var(--fw-300);
   text-transform: lowercase;
@@ -33,11 +41,11 @@
 }
 
 .select__sortBy {
-  width: 11em;
+  width: 12.5em;
 }
 
 .select__orderBy {
-  width: 9em;
+  width: 10em;
 }
 
 /* --------------------------------------------- */
