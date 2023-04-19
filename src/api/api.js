@@ -85,7 +85,6 @@ export const postComment = (newComment, article_id) => {
   return newsApi
     .post(`/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
-      console.log(data);
       return data.comment;
     });
 };
@@ -93,17 +92,3 @@ export const postComment = (newComment, article_id) => {
 export const deleteCommentById = (comment_id) => {
   return newsApi.delete(`/comments/${comment_id}`);
 };
-
-// export const getArticlesByTopic = (topic) => {
-//   let path = `/articles`;
-
-//   return newsApi
-//     .get(path, {
-//       params: {
-//         topic: topic,
-//       },
-//     })
-//     .then(({ data }) => {
-//       return data.articles;
-//     });
-// };
