@@ -31,6 +31,13 @@
   letter-spacing: var(--ls-3);
   padding: 2em 1em 1em 1em;
 }
+.select__UserLogin {
+  border: 3px solid black;
+  background-color: var(--clr-green);
+  padding: 0.75em;
+  font-size: var(--fs-200);
+  letter-spacing: var(--ls-3);
+}
 
 .button__UserLogin {
   background-color: var(--clr-light-blue);
@@ -39,5 +46,5 @@
   letter-spacing: var(--ls-2);
   border: none;
   padding: 0.35em 0.75em;
-  margin: 2em;
+  margin: 3em;
 }
