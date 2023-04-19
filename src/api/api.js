@@ -4,32 +4,30 @@ const newsApi = axios.create({
   baseURL: 'https://skimd-it.onrender.com/api',
 });
 
-export const getArticles = () => {
+export const getTopics = () => {
+  return newsApi.get('/topics').then(({ data }) => {
+    return data.topics;
+  });
+};
+
+export const getArticles = (topic, sort_by, order, pageNum) => {
   return newsApi
-    .get('/articles')
-    .then(({ data }) => {
-      return data.articles;
+    .get('/articles', {
+      params: {
+        topic: topic,
+        sort_by,
+        order,
+        p: pageNum,
+      },
     })
-    .catch(() => {
-      console.log('no article');
+    .then(({ data }) => {
+      return data;
     });
 };
 
 export const getArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then(({ data }) => {
     return data.articles;
-  });
-};
-
-export const getUser = (author) => {
-  return newsApi.get(`/users/${author}`).then(({ data }) => {
-    return data.users.avatar_url;
-  });
-};
-
-export const getUsers = () => {
-  return newsApi.get('./users').then(({ data }) => {
-    return data.users;
   });
 };
 
@@ -47,6 +45,18 @@ export const downVoteArticle = (article_id) => {
     .then(({ data }) => {
       return data.updatedArticle;
     });
+};
+
+export const getUser = (author) => {
+  return newsApi.get(`/users/${author}`).then(({ data }) => {
+    return data.users.avatar_url;
+  });
+};
+
+export const getUsers = () => {
+  return newsApi.get('./users').then(({ data }) => {
+    return data.users;
+  });
 };
 
 export const getComments = (article_id) => {
@@ -71,30 +81,6 @@ export const downVoteComment = (comment_id) => {
     });
 };
 
-export const deleteCommentById = (comment_id) => {
-  return newsApi.delete(`/comments/${comment_id}`);
-};
-
-export const getTopics = () => {
-  return newsApi.get('/topics').then(({ data }) => {
-    return data.topics;
-  });
-};
-
-export const getArticlesByTopic = (topic) => {
-  let path = `/articles`;
-
-  return newsApi
-    .get(path, {
-      params: {
-        topic: topic,
-      },
-    })
-    .then(({ data }) => {
-      return data.articles;
-    });
-};
-
 export const postComment = (newComment, article_id) => {
   return newsApi
     .post(`/articles/${article_id}/comments`, newComment)
@@ -103,3 +89,21 @@ export const postComment = (newComment, article_id) => {
       return data.comment;
     });
 };
+
+export const deleteCommentById = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
+};
+
+// export const getArticlesByTopic = (topic) => {
+//   let path = `/articles`;
+
+//   return newsApi
+//     .get(path, {
+//       params: {
+//         topic: topic,
+//       },
+//     })
+//     .then(({ data }) => {
+//       return data.articles;
+//     });
+// };
