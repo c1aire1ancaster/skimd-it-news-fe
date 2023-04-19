@@ -31,9 +31,15 @@ const Comments = ({ article_id, commentCount, setCommentCount }) => {
     });
   };
 
-  return isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
+  if (isLoading) {
+    return (
+      <div className={styles.container__loading}>
+        <h2 className={styles.h2__loading}>Loading...</h2>
+      </div>
+    );
+  }
+
+  return (
     <section>
       <PostComment
         article_id={article_id}

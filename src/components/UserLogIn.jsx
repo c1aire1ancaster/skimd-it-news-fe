@@ -23,6 +23,16 @@ const UserLogIn = () => {
     navigate('/articles');
   };
 
+  if (isLoading) {
+    return (
+      <div className={styles.container__loading}>
+        <h2 className={styles.h2__loading}>
+          Hey there! Hold tight whilst we get our shizzle together...
+        </h2>
+      </div>
+    );
+  }
+
   return (
     <section className={styles.container__UserLogin}>
       <form className={styles.ulContainer__UserLogin} onSubmit={handleSubmit}>
