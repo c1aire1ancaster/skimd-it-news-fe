@@ -1,5 +1,5 @@
 import styles from '../styles/Comments.module.css';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { getComments } from '../api/api';
 import CommentCard from './CommentCard';
 import PostComment from './PostComment';
@@ -31,15 +31,11 @@ const Comments = ({ article_id, commentCount, setCommentCount }) => {
     });
   };
 
-  if (isLoading) {
-    return (
-      <div className={styles.container__loading}>
-        <h2 className={styles.h2__loading}>Loading...</h2>
-      </div>
-    );
-  }
-
-  return (
+  return isLoading ? (
+    <div className={styles.container__loading}>
+      <h2 className={styles.h2__loading}>Loading...</h2>
+    </div>
+  ) : (
     <section>
       <PostComment
         article_id={article_id}

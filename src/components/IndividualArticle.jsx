@@ -37,7 +37,6 @@ const IndividualArticle = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
         setIsArticleError(true);
         setIsLoading(false);
       });
@@ -74,25 +73,17 @@ const IndividualArticle = () => {
   };
   const linkPathToArticlesByTopic = `/topic/${article.topic}`;
 
-  if (isLoading) {
-    return (
-      <div className={styles.container__loading}>
-        <h2 className={styles.h2__loading}>Loading...</h2>
-      </div>
-    );
-  }
-
-  if (isArticleError) {
-    return (
-      <div className={styles.container__articleError}>
-        <h2 className={styles.h2__articleError}>
-          Sorry - we can't seem to find the article you're looking for...
-        </h2>
-      </div>
-    );
-  }
-
-  return (
+  return isArticleError ? (
+    <div className={styles.container__articleError}>
+      <h2 className={styles.h2__articleError}>
+        Sorry - we can't seem to find the article you're looking for...
+      </h2>
+    </div>
+  ) : isLoading ? (
+    <div className={styles.container__loading}>
+      <h2 className={styles.h2__loading}>Loading...</h2>
+    </div>
+  ) : (
     <section className={styles.container}>
       <section className={styles.section__articleContainer}>
         <h2 className={styles.h2__articleTitle}>{article.title}</h2>
