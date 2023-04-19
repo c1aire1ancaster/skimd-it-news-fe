@@ -18,17 +18,6 @@ const ArticleList = () => {
   const sortByQuery = searchParams.get('sort_by') || undefined;
   const orderByQuery = searchParams.get('order') || undefined;
 
-  // const sortBy = (selectedSortBy) => {
-  //   const newSortParams = new URLSearchParams(searchParams);
-  //   newSortParams.set("sort_by", selectedSortBy);
-  //   setSearchParams(newSortParams);
-  // };
-
-  // const setOrderBy = (selectedOrderBy) => {
-  //   const newOrderParams = new URLSearchParams(searchParams);
-  //   newOrderParams.set("order", selectedOrder);
-  //   setSearchParams(newOrderParams);
-  // };
 
   useEffect(() => {
     setIsLoading(true);
