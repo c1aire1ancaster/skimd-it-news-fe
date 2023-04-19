@@ -12,9 +12,8 @@
 
 .li__topic {
   font-size: var(--fs-200);
-  font-weight: var(--fw-500);
-  text-transform: uppercase;
-  padding: 0.15em 0.35em 0.15em 0.45em;
+  font-weight: var(--fw-300);
+  padding: 0.15em 0.35em 0.25em 0.45em;
   list-style: none;
   margin: 0.15em 0.3em 0 0.3em;
 

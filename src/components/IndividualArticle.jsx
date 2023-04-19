@@ -21,12 +21,14 @@ const IndividualArticle = ({ loggedInUser }) => {
   const [article, setArticle] = useState({});
   const [userVote, setUserVote] = useState(0);
   const [userAvatarImg, setUserAvatarImg] = useState('');
+  const [commentCount, setCommentCount] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((article) => {
       const { author } = article;
       setArticle(article);
+      setCommentCount(article.comment_count);
       setIsLoading(false);
       getUser(author).then((userAvatarUrl) => {
         setUserAvatarImg(userAvatarUrl);
@@ -183,7 +185,8 @@ const IndividualArticle = ({ loggedInUser }) => {
       </section>
       <Comments
         article_id={article_id}
-        comment_count={article.comment_count}
+        commentCount={commentCount}
+        setCommentCount={setCommentCount}
         loggedInUser={loggedInUser}
       />
     </section>
