@@ -61,6 +61,9 @@
   margin: 0 0 0 0.1em;
 }
 
+/* --------------------------------------------- */
+/* post messages */
+
 .p__postPending,
 .p__postSuccessful,
 .p__postError {

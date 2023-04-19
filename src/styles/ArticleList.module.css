@@ -6,6 +6,9 @@
   padding: 0;
 }
 
+/* --------------------------------------------- */
+/* topic error message  */
+
 .container__topicError {
   display: flex;
   flex-direction: column;
@@ -17,6 +20,9 @@
   margin: 5em 0;
 }
 
+/* --------------------------------------------- */
+/* loading message  */
+
 .container__loading {
   display: flex;
   flex-direction: column;
@@ -26,6 +32,9 @@
 .h2__loading {
   margin: 5em 0;
 }
+
+/* --------------------------------------------- */
+/* sort and order by */
 
 .container__sortAndOrder {
   padding: 1em 2em;
@@ -89,10 +98,6 @@
     max-width: 39.15em;
     margin: auto;
   }
-  /* .section__searchOptions {
-    height: 9em;
-    position: relative;
-  } */
 }
 
 @media (min-width: 1000px) {

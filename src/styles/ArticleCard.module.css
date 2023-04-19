@@ -50,10 +50,6 @@
   padding: 0.4em 0.4em;
 }
 
-/* .div__articleImgWrapper {
-  position: relative;
-} */
-
 .img__articleImg {
   -webkit-filter: grayscale(0.8);
   filter: grayscale(0.8);
@@ -69,78 +65,6 @@
 .img__articleImg:hover {
   -webkit-filter: grayscale(0);
   filter: grayscale(0);
-}
-
-/* --------------------------------------------- */
-/* error message  */
-
-.p__errorMessage {
-  border: none;
-  position: absolute;
-  bottom: 2.45em;
-  left: 0.35em;
-  background-color: var(--clr-red);
-  font-size: var(--fs-200);
-  font-weight: var(--fw-200);
-  letter-spacing: var(--ls-1);
-  line-height: 1.7;
-  width: 9em;
-  height: 1.75em;
-  padding: 0 0.5em;
-}
-
-/* --------------------------------------------- */
-/* vote success message  */
-
-.p__voteSuccess {
-  border: none;
-  position: absolute;
-  bottom: 2.45em;
-  left: 0.35em;
-  background-color: var(--clr-light-blue);
-  font-size: var(--fs-200);
-  font-weight: var(--fw-200);
-  letter-spacing: var(--ls-1);
-  line-height: 1.7;
-  width: 7em;
-  height: 1.75em;
-  padding: 0 0.5em;
-}
-
-/* --------------------------------------------- */
-/* error message  */
-
-.p__errorMessage {
-  border: none;
-  position: absolute;
-  bottom: 2.45em;
-  left: 0.35em;
-  background-color: var(--clr-red);
-  font-size: var(--fs-200);
-  font-weight: var(--fw-200);
-  letter-spacing: var(--ls-1);
-  line-height: 1.7;
-  width: 9em;
-  height: 1.75em;
-  padding: 0 0.5em;
-}
-
-/* --------------------------------------------- */
-/* vote success message  */
-
-.p__voteSuccess {
-  border: none;
-  position: absolute;
-  bottom: 2.45em;
-  left: 0.35em;
-  background-color: var(--clr-light-blue);
-  font-size: var(--fs-200);
-  font-weight: var(--fw-200);
-  letter-spacing: var(--ls-1);
-  line-height: 1.7;
-  width: 7em;
-  height: 1.75em;
-  padding: 0 0.5em;
 }
 
 /* --------------------------------------------- */
@@ -241,7 +165,7 @@
 }
 
 /* --------------------------------------------- */
-/* topic  */
+/* topic tag */
 
 .link__articleTopicTag {
   text-decoration: none;
@@ -285,6 +209,24 @@
   letter-spacing: var(--ls-1);
   line-height: 1.7;
   width: 9em;
+  height: 1.75em;
+  padding: 0 0.5em;
+}
+
+/* --------------------------------------------- */
+/* vote success message  */
+
+.p__voteSuccess {
+  border: none;
+  position: absolute;
+  bottom: 2.45em;
+  left: 0.35em;
+  background-color: var(--clr-light-blue);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-200);
+  letter-spacing: var(--ls-1);
+  line-height: 1.7;
+  width: 7em;
   height: 1.75em;
   padding: 0 0.5em;
 }

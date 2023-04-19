@@ -1,7 +1,7 @@
 import styles from '../styles/PostComment.module.css';
 import { postComment } from '../api/api';
-import { useState, useContext } from 'react';
 import { LoggedInUserContext } from '../contexts/LoggedInUser';
+import { useState, useContext } from 'react';
 
 const PostComment = ({ article_id, setCommentList, setCommentCount }) => {
   const { loggedInUser } = useContext(LoggedInUserContext);

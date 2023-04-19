@@ -1,11 +1,10 @@
-import { useParams } from 'react-router-dom';
 import styles from '../styles/IndividualArticle.module.css';
-import Comments from './Comments';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { getArticleById, getUser } from '../api/api';
-import formatDate from '../utils/ArticleCard.utils';
+import Comments from './Comments';
 import { upVoteArticle, downVoteArticle } from '../api/api';
+import formatDate from '../utils/ArticleCard.utils';
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import {
   TfiTag,
   TfiComment,
@@ -36,7 +35,7 @@ const IndividualArticle = () => {
           setUserAvatarImg(userAvatarUrl);
         });
       })
-      .catch((error) => {
+      .catch(() => {
         setIsArticleError(true);
         setIsLoading(false);
       });
@@ -74,17 +73,17 @@ const IndividualArticle = () => {
   const linkPathToArticlesByTopic = `/topic/${article.topic}`;
 
   return isArticleError ? (
-    <div className={styles.container__articleError}>
+    <main className={styles.container__articleError}>
       <h2 className={styles.h2__articleError}>
         Sorry - we can't seem to find the article you're looking for...
       </h2>
-    </div>
+    </main>
   ) : isLoading ? (
-    <div className={styles.container__loading}>
+    <main className={styles.container__loading}>
       <h2 className={styles.h2__loading}>Loading...</h2>
-    </div>
+    </main>
   ) : (
-    <section className={styles.container}>
+    <main className={styles.container__page}>
       <section className={styles.section__articleContainer}>
         <h2 className={styles.h2__articleTitle}>{article.title}</h2>
         <h3 className={styles.h3__articleAuthor}>{article.author}</h3>
@@ -202,7 +201,7 @@ const IndividualArticle = () => {
         commentCount={commentCount}
         setCommentCount={setCommentCount}
       />
-    </section>
+    </main>
   );
 };
 

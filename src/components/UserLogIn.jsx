@@ -1,8 +1,8 @@
 import styles from '../styles/UserLogIn.module.css';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState, useContext } from 'react';
-import { getUsers } from '../api/api';
 import { LoggedInUserContext } from '../contexts/LoggedInUser';
+import { getUsers } from '../api/api';
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UserLogIn = () => {
   const { loggedInUser, setLoggedInUser } = useContext(LoggedInUserContext);
@@ -24,13 +24,13 @@ const UserLogIn = () => {
   };
 
   return isLoading ? (
-    <div className={styles.container__loading}>
+    <main className={styles.container__loading}>
       <h2 className={styles.h2__loading}>
         Hey there! Hold tight whilst we get our shizzle together...
       </h2>
-    </div>
+    </main>
   ) : (
-    <section className={styles.container__UserLogin}>
+    <main className={styles.container__UserLogin}>
       <form className={styles.ulContainer__UserLogin} onSubmit={handleSubmit}>
         <label htmlFor="user" className={styles.label__UserLogin}>
           Hi there! Who are ya?
@@ -57,7 +57,7 @@ const UserLogIn = () => {
           Login
         </button>
       </form>
-    </section>
+    </main>
   );
 };
 

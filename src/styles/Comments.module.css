@@ -6,6 +6,9 @@
   padding: 0;
 }
 
+/* --------------------------------------------- */
+/* loading  */
+
 .container__loading {
   display: flex;
   flex-direction: column;
@@ -15,6 +18,9 @@
 .h2__loading {
   margin: 1em 0 2em 0;
 }
+
+/* --------------------------------------------- */
+/* number of comments overall */
 
 .h2__commentsTitle {
   text-transform: uppercase;

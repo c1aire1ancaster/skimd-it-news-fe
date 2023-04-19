@@ -46,8 +46,8 @@
   --ff-sans-normal: 'Inter', sans-serif;
 }
 
-/* Reset               */
-/* ------------------- */
+/* --------------------------------------------- */
+/* Reset */
 
 /* Box sizing */
 *,
@@ -82,7 +82,7 @@ p {
   font-weight: 400;
 }
 
-/* set up the body */
+/* Set up the body */
 body {
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-300);
@@ -94,14 +94,14 @@ body {
   min-height: 100vh;
 }
 
-/* make images easier to work with */
+/* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
 
-/* make form elements easier to work with */
+/* Make form elements easier to work with */
 input,
 button,
 textarea,
@@ -109,7 +109,7 @@ select {
   font: inherit;
 }
 
-/* remove animations for people who've turned them off */
+/* Remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -120,6 +120,9 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+/* --------------------------------------------- */
+/* 404 error message */
 
 .container__errorMessage {
   display: flex;

@@ -6,6 +6,9 @@
   padding: 0;
 }
 
+/* --------------------------------------------- */
+/* loading */
+
 .container__loading {
   display: flex;
   flex-direction: column;
@@ -18,6 +21,9 @@
   margin: 3em 0 0 0;
   width: 24em;
 }
+
+/* --------------------------------------------- */
+/* login page */
 
 .ulContainer__UserLogin {
   display: flex;

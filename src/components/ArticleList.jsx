@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import styles from '../styles/ArticleList.module.css';
 import { getArticles } from '../api/api';
 import ArticleCard from './ArticleCard';
 import ArticleSearchByTopic from './ArticleSearchByTopic';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TfiAngleRight, TfiAngleLeft } from 'react-icons/tfi';
-import styles from '../styles/ArticleList.module.css';
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
@@ -12,8 +12,8 @@ const ArticleList = () => {
   const [pageNum, setPageNum] = useState(1);
   const [maxPageNum, setMaxPageNum] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
   const [searchParams, setSearchParams] = useSearchParams();
+
   const topicQuery = searchParams.get('topic');
   const sortByQuery = searchParams.get('sort_by') || undefined;
   const orderByQuery = searchParams.get('order') || undefined;
@@ -45,15 +45,15 @@ const ArticleList = () => {
   };
 
   return errorMessage ? (
-    <div className={styles.container__topicError}>
+    <main className={styles.container__topicError}>
       <h2 className={styles.h2__topicError}>{errorMessage}</h2>
-    </div>
+    </main>
   ) : isLoading ? (
-    <div className={styles.container__loading}>
+    <main className={styles.container__loading}>
       <h2 className={styles.h2__loading}>Loading...</h2>
-    </div>
+    </main>
   ) : (
-    <div>
+    <main>
       <section className={styles.container__section}>
         <ArticleSearchByTopic />
         <section className={styles.container__sortAndOrder}>
@@ -136,7 +136,7 @@ const ArticleList = () => {
           )}
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 

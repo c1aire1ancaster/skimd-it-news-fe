@@ -1,9 +1,9 @@
 import styles from '../styles/CommentCard.module.css';
 import { getUser } from '../api/api';
-import { upVoteComment, downVoteComment, deleteCommentById } from '../api/api';
-import { useState, useEffect, useContext } from 'react';
 import formatDateAndTime from '../utils/CommentCard.utils';
+import { upVoteComment, downVoteComment, deleteCommentById } from '../api/api';
 import { LoggedInUserContext } from '../contexts/LoggedInUser';
+import { useState, useEffect, useContext } from 'react';
 import {
   TfiAngleDown,
   TfiAngleUp,

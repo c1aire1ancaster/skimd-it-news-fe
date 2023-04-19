@@ -1,7 +1,7 @@
 import styles from '../styles/ArticleSearchByTopic.module.css';
+import { getTopics } from '../api/api';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getTopics } from '../api/api';
 
 const ArticleSearchByTopic = () => {
   const [topicList, setTopicList] = useState([]);

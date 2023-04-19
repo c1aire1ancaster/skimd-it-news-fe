@@ -1,5 +1,7 @@
 import styles from '../styles/ArticleCard.module.css';
 import formatDate from '../utils/ArticleCard.utils';
+import { upVoteArticle, downVoteArticle } from '../api/api';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   TfiComment,
@@ -8,13 +10,12 @@ import {
   TfiTag,
   TfiThumbUp,
 } from 'react-icons/tfi';
-import { upVoteArticle, downVoteArticle } from '../api/api';
-import { useState } from 'react';
 
 const ArticleCard = (singleArticle) => {
   const [article, setArticle] = useState(singleArticle);
   const [isError, setIsError] = useState(false);
   const [userVote, setUserVote] = useState(0);
+
   const formattedDate = formatDate(article.created_at);
 
   const downVote = () => {

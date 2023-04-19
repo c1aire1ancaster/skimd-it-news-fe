@@ -1,8 +1,8 @@
 import styles from '../styles/Comments.module.css';
-import { useEffect, useState } from 'react';
 import { getComments } from '../api/api';
 import CommentCard from './CommentCard';
 import PostComment from './PostComment';
+import { useEffect, useState } from 'react';
 import { TfiAngleRight, TfiAngleLeft } from 'react-icons/tfi';
 
 const Comments = ({ article_id, commentCount, setCommentCount }) => {
