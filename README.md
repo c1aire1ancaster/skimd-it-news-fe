@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Skim'd It News Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🔗 Links:
 
-## Available Scripts
+Link to hosted version of Skim'd It website: https://skimd-it.netlify.app/
 
-In the project directory, you can run:
+Link to repository for backend project for Skim'd It: https://github.com/clairenlancaster/skimd-it-news-be
 
-### `npm start`
+---
+--- 
+## 🏗️ Project Summary:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A news website that allows users to login with an account, sift through all articles or filter them down by topic. Articles can be sorted by date, comment count and vote count whilst also being rendered in ascending or descending order. As well as reading an article, users can up-vote or down-vote an article, read comments related to a specific article, up-vote and down-vote comments, post their own comments and delete any comments they have written.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+---
+## ⚙️ Version Requirements:
 
-### `npm test`
+- Node.js: v19.2.0
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+---
 
-### `npm run build`
+## ✅ Instructions:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If you wish to clone this project and run it locally, follow the instructions below:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone Repository:
+1. In this repository, use the <code><>Code</code> button to access and copy its url.
+2. In your terminal, use <code>git clone</code> followed by the repository's url.
+3. Open up the folder in you preferred IDE.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
+### 2. Install Dependencies:
+- Run <code>npm install</code> to install all dependencies.
+- See the package.json file for an overview of all dependencies used.
+---
+### 3. Setup Redirects:
+Add a file, <code>_redirects</code> (no file extension) to your public directory. This file should contain the redirect rule: <code>/* /index.html 200</code>. 
 
-### `npm run eject`
+This is telling Netlify "if a request comes in to any endpoint on our base url - serve our index.html page and give a 200 status". 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We put this in the public directory to ensure that Webpack includes this file in the production build of the app.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. Deploying Website:
+To host website, you could use [Netlify](https://www.netlify.com/). 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Full instructions are available in the <code>create-react-app</code> docs. 
 
-## Learn More
+Scroll down this [page](https://create-react-app.dev/docs/deployment/) to find the up-to-date instructions on how to deploy the website.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
