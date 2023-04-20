@@ -9,7 +9,7 @@ const Comments = ({ article_id, commentCount, setCommentCount }) => {
   const [commentList, setCommentList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
-  const [maxPageNum, setMaxPageNum] = useState(Math.ceil(commentCount / 10));
+  const [maxPageNum] = useState(Math.ceil(commentCount / 10));
 
   useEffect(() => {
     setIsLoading(true);
