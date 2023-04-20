@@ -1,5 +1,7 @@
 # Skim'd It News Website
 
+Skim'd It News Website was my solo frontend project for the [Northcoders'](https://northcoders.com/our-courses/coding-bootcamp) Software Engineering Bootcamp.
+
 ## 🔗 Links:
 
 Link to hosted version of Skim'd It website: https://skimd-it.netlify.app/
