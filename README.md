@@ -9,7 +9,7 @@ Skim'd It News Website was my solo frontend project for the [Northcoders'](https
 
 Link to hosted version of Skim'd It website: https://skimd-it.netlify.app/
 
-Link to repository for backend project for Skim'd It: https://github.com/clairenlancaster/skimd-it-news-be
+Link to repository for backend project for Skim'd It: https://github.com/c1aire1ancaster/skimd-it-news-be
 
 ---
 --- 
